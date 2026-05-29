@@ -1,0 +1,1766 @@
+[
+  {
+    "command": "alpha",
+    "description": "Greek small letter alpha",
+    "descriptionZh": "希腊小写字母阿尔法",
+    "snippet": "alpha",
+    "category": "greek_lower"
+  },
+  {
+    "command": "beta",
+    "description": "Greek small letter beta",
+    "descriptionZh": "希腊小写字母贝塔",
+    "snippet": "beta",
+    "category": "greek_lower"
+  },
+  {
+    "command": "gamma",
+    "description": "Greek small letter gamma",
+    "descriptionZh": "希腊小写字母伽马",
+    "snippet": "gamma",
+    "category": "greek_lower"
+  },
+  {
+    "command": "delta",
+    "description": "Greek small letter delta",
+    "descriptionZh": "希腊小写字母德尔塔",
+    "snippet": "delta",
+    "category": "greek_lower"
+  },
+  {
+    "command": "epsilon",
+    "description": "Greek small letter epsilon",
+    "descriptionZh": "希腊小写字母伊普西龙",
+    "snippet": "epsilon",
+    "category": "greek_lower"
+  },
+  {
+    "command": "varepsilon",
+    "description": "Variant epsilon",
+    "descriptionZh": "变体伊普西龙",
+    "snippet": "varepsilon",
+    "category": "greek_lower"
+  },
+  {
+    "command": "zeta",
+    "description": "Greek small letter zeta",
+    "descriptionZh": "希腊小写字母泽塔",
+    "snippet": "zeta",
+    "category": "greek_lower"
+  },
+  {
+    "command": "eta",
+    "description": "Greek small letter eta",
+    "descriptionZh": "希腊小写字母伊塔",
+    "snippet": "eta",
+    "category": "greek_lower"
+  },
+  {
+    "command": "theta",
+    "description": "Greek small letter theta",
+    "descriptionZh": "希腊小写字母西塔",
+    "snippet": "theta",
+    "category": "greek_lower"
+  },
+  {
+    "command": "vartheta",
+    "description": "Variant theta",
+    "descriptionZh": "变体西塔",
+    "snippet": "vartheta",
+    "category": "greek_lower"
+  },
+  {
+    "command": "iota",
+    "description": "Greek small letter iota",
+    "descriptionZh": "希腊小写字母约塔",
+    "snippet": "iota",
+    "category": "greek_lower"
+  },
+  {
+    "command": "kappa",
+    "description": "Greek small letter kappa",
+    "descriptionZh": "希腊小写字母卡帕",
+    "snippet": "kappa",
+    "category": "greek_lower"
+  },
+  {
+    "command": "lambda",
+    "description": "Greek small letter lambda",
+    "descriptionZh": "希腊小写字母拉姆达",
+    "snippet": "lambda",
+    "category": "greek_lower"
+  },
+  {
+    "command": "mu",
+    "description": "Greek small letter mu",
+    "descriptionZh": "希腊小写字母缪",
+    "snippet": "mu",
+    "category": "greek_lower"
+  },
+  {
+    "command": "nu",
+    "description": "Greek small letter nu",
+    "descriptionZh": "希腊小写字母纽",
+    "snippet": "nu",
+    "category": "greek_lower"
+  },
+  {
+    "command": "xi",
+    "description": "Greek small letter xi",
+    "descriptionZh": "希腊小写字母克西",
+    "snippet": "xi",
+    "category": "greek_lower"
+  },
+  {
+    "command": "omicron",
+    "description": "Greek small letter omicron",
+    "descriptionZh": "希腊小写字母奥密克戎",
+    "snippet": "omicron",
+    "category": "greek_lower"
+  },
+  {
+    "command": "pi",
+    "description": "Greek small letter pi",
+    "descriptionZh": "希腊小写字母派",
+    "snippet": "pi",
+    "category": "greek_lower"
+  },
+  {
+    "command": "varpi",
+    "description": "Variant pi",
+    "descriptionZh": "变体派",
+    "snippet": "varpi",
+    "category": "greek_lower"
+  },
+  {
+    "command": "rho",
+    "description": "Greek small letter rho",
+    "descriptionZh": "希腊小写字母柔",
+    "snippet": "rho",
+    "category": "greek_lower"
+  },
+  {
+    "command": "varrho",
+    "description": "Variant rho",
+    "descriptionZh": "变体柔",
+    "snippet": "varrho",
+    "category": "greek_lower"
+  },
+  {
+    "command": "sigma",
+    "description": "Greek small letter sigma",
+    "descriptionZh": "希腊小写字母西格马",
+    "snippet": "sigma",
+    "category": "greek_lower"
+  },
+  {
+    "command": "varsigma",
+    "description": "Variant sigma",
+    "descriptionZh": "变体西格马",
+    "snippet": "varsigma",
+    "category": "greek_lower"
+  },
+  {
+    "command": "tau",
+    "description": "Greek small letter tau",
+    "descriptionZh": "希腊小写字母陶",
+    "snippet": "tau",
+    "category": "greek_lower"
+  },
+  {
+    "command": "upsilon",
+    "description": "Greek small letter upsilon",
+    "descriptionZh": "希腊小写字母宇普西龙",
+    "snippet": "upsilon",
+    "category": "greek_lower"
+  },
+  {
+    "command": "phi",
+    "description": "Greek small letter phi",
+    "descriptionZh": "希腊小写字母斐",
+    "snippet": "phi",
+    "category": "greek_lower"
+  },
+  {
+    "command": "varphi",
+    "description": "Variant phi",
+    "descriptionZh": "变体斐",
+    "snippet": "varphi",
+    "category": "greek_lower"
+  },
+  {
+    "command": "chi",
+    "description": "Greek small letter chi",
+    "descriptionZh": "希腊小写字母卡伊",
+    "snippet": "chi",
+    "category": "greek_lower"
+  },
+  {
+    "command": "psi",
+    "description": "Greek small letter psi",
+    "descriptionZh": "希腊小写字母普西",
+    "snippet": "psi",
+    "category": "greek_lower"
+  },
+  {
+    "command": "omega",
+    "description": "Greek small letter omega",
+    "descriptionZh": "希腊小写字母奥米伽",
+    "snippet": "omega",
+    "category": "greek_lower"
+  },
+  {
+    "command": "Gamma",
+    "description": "Greek capital letter Gamma",
+    "descriptionZh": "希腊大写字母伽马",
+    "snippet": "Gamma",
+    "category": "greek_upper"
+  },
+  {
+    "command": "Delta",
+    "description": "Greek capital letter Delta",
+    "descriptionZh": "希腊大写字母德尔塔",
+    "snippet": "Delta",
+    "category": "greek_upper"
+  },
+  {
+    "command": "Theta",
+    "description": "Greek capital letter Theta",
+    "descriptionZh": "希腊大写字母西塔",
+    "snippet": "Theta",
+    "category": "greek_upper"
+  },
+  {
+    "command": "Lambda",
+    "description": "Greek capital letter Lambda",
+    "descriptionZh": "希腊大写字母拉姆达",
+    "snippet": "Lambda",
+    "category": "greek_upper"
+  },
+  {
+    "command": "Xi",
+    "description": "Greek capital letter Xi",
+    "descriptionZh": "希腊大写字母克西",
+    "snippet": "Xi",
+    "category": "greek_upper"
+  },
+  {
+    "command": "Pi",
+    "description": "Greek capital letter Pi",
+    "descriptionZh": "希腊大写字母派",
+    "snippet": "Pi",
+    "category": "greek_upper"
+  },
+  {
+    "command": "Sigma",
+    "description": "Greek capital letter Sigma",
+    "descriptionZh": "希腊大写字母西格马",
+    "snippet": "Sigma",
+    "category": "greek_upper"
+  },
+  {
+    "command": "Upsilon",
+    "description": "Greek capital letter Upsilon",
+    "descriptionZh": "希腊大写字母宇普西龙",
+    "snippet": "Upsilon",
+    "category": "greek_upper"
+  },
+  {
+    "command": "Phi",
+    "description": "Greek capital letter Phi",
+    "descriptionZh": "希腊大写字母斐",
+    "snippet": "Phi",
+    "category": "greek_upper"
+  },
+  {
+    "command": "Psi",
+    "description": "Greek capital letter Psi",
+    "descriptionZh": "希腊大写字母普西",
+    "snippet": "Psi",
+    "category": "greek_upper"
+  },
+  {
+    "command": "Omega",
+    "description": "Greek capital letter Omega",
+    "descriptionZh": "希腊大写字母奥米伽",
+    "snippet": "Omega",
+    "category": "greek_upper"
+  },
+  {
+    "command": "pm",
+    "description": "plus-minus sign",
+    "descriptionZh": "加减号",
+    "snippet": "pm",
+    "category": "operator"
+  },
+  {
+    "command": "mp",
+    "description": "minus-plus sign",
+    "descriptionZh": "减加号",
+    "snippet": "mp",
+    "category": "operator"
+  },
+  {
+    "command": "times",
+    "description": "multiplication sign",
+    "descriptionZh": "乘号",
+    "snippet": "times",
+    "category": "operator"
+  },
+  {
+    "command": "div",
+    "description": "division sign",
+    "descriptionZh": "除号",
+    "snippet": "div",
+    "category": "operator"
+  },
+  {
+    "command": "cdot",
+    "description": "centered dot",
+    "descriptionZh": "居中点",
+    "snippet": "cdot",
+    "category": "operator"
+  },
+  {
+    "command": "ast",
+    "description": "asterisk operator",
+    "descriptionZh": "星号运算符",
+    "snippet": "ast",
+    "category": "operator"
+  },
+  {
+    "command": "star",
+    "description": "five-pointed star",
+    "descriptionZh": "五角星",
+    "snippet": "star",
+    "category": "operator"
+  },
+  {
+    "command": "circ",
+    "description": "circle operator",
+    "descriptionZh": "圆圈运算符",
+    "snippet": "circ",
+    "category": "operator"
+  },
+  {
+    "command": "bullet",
+    "description": "bullet operator",
+    "descriptionZh": "项目符号运算符",
+    "snippet": "bullet",
+    "category": "operator"
+  },
+  {
+    "command": "cap",
+    "description": "intersection",
+    "descriptionZh": "交集",
+    "snippet": "cap",
+    "category": "operator"
+  },
+  {
+    "command": "cup",
+    "description": "union",
+    "descriptionZh": "并集",
+    "snippet": "cup",
+    "category": "operator"
+  },
+  {
+    "command": "setminus",
+    "description": "set minus",
+    "descriptionZh": "集合差",
+    "snippet": "setminus",
+    "category": "operator"
+  },
+  {
+    "command": "wr",
+    "description": "wreath product",
+    "descriptionZh": "圈积",
+    "snippet": "wr",
+    "category": "operator"
+  },
+  {
+    "command": "diamond",
+    "description": "diamond operator",
+    "descriptionZh": "菱形运算符",
+    "snippet": "diamond",
+    "category": "operator"
+  },
+  {
+    "command": "bigtriangleup",
+    "description": "big triangle up",
+    "descriptionZh": "大上三角",
+    "snippet": "bigtriangleup",
+    "category": "operator"
+  },
+  {
+    "command": "bigtriangledown",
+    "description": "big triangle down",
+    "descriptionZh": "大下三角",
+    "snippet": "bigtriangledown",
+    "category": "operator"
+  },
+  {
+    "command": "triangleleft",
+    "description": "left triangle",
+    "descriptionZh": "左三角",
+    "snippet": "triangleleft",
+    "category": "operator"
+  },
+  {
+    "command": "triangleright",
+    "description": "right triangle",
+    "descriptionZh": "右三角",
+    "snippet": "triangleright",
+    "category": "operator"
+  },
+  {
+    "command": "oplus",
+    "description": "circled plus",
+    "descriptionZh": "圈加",
+    "snippet": "oplus",
+    "category": "operator"
+  },
+  {
+    "command": "ominus",
+    "description": "circled minus",
+    "descriptionZh": "圈减",
+    "snippet": "ominus",
+    "category": "operator"
+  },
+  {
+    "command": "otimes",
+    "description": "circled times",
+    "descriptionZh": "圈乘",
+    "snippet": "otimes",
+    "category": "operator"
+  },
+  {
+    "command": "oslash",
+    "description": "circled slash",
+    "descriptionZh": "圈斜杠",
+    "snippet": "oslash",
+    "category": "operator"
+  },
+  {
+    "command": "odot",
+    "description": "circled dot",
+    "descriptionZh": "圈点",
+    "snippet": "odot",
+    "category": "operator"
+  },
+  {
+    "command": "bigcirc",
+    "description": "big circle",
+    "descriptionZh": "大圆",
+    "snippet": "bigcirc",
+    "category": "operator"
+  },
+  {
+    "command": "dagger",
+    "description": "dagger",
+    "descriptionZh": "剑号",
+    "snippet": "dagger",
+    "category": "operator"
+  },
+  {
+    "command": "ddagger",
+    "description": "double dagger",
+    "descriptionZh": "双剑号",
+    "snippet": "ddagger",
+    "category": "operator"
+  },
+  {
+    "command": "amalg",
+    "description": "amalgamation",
+    "descriptionZh": "合并运算符",
+    "snippet": "amalg",
+    "category": "operator"
+  },
+  {
+    "command": "leq",
+    "description": "less than or equal",
+    "descriptionZh": "小于等于",
+    "snippet": "leq",
+    "category": "relation"
+  },
+  {
+    "command": "le",
+    "description": "less than or equal",
+    "descriptionZh": "小于等于",
+    "snippet": "le",
+    "category": "relation"
+  },
+  {
+    "command": "geq",
+    "description": "greater than or equal",
+    "descriptionZh": "大于等于",
+    "snippet": "geq",
+    "category": "relation"
+  },
+  {
+    "command": "ge",
+    "description": "greater than or equal",
+    "descriptionZh": "大于等于",
+    "snippet": "ge",
+    "category": "relation"
+  },
+  {
+    "command": "prec",
+    "description": "precedes",
+    "descriptionZh": "前于",
+    "snippet": "prec",
+    "category": "relation"
+  },
+  {
+    "command": "succ",
+    "description": "succeeds",
+    "descriptionZh": "后于",
+    "snippet": "succ",
+    "category": "relation"
+  },
+  {
+    "command": "preceq",
+    "description": "precedes or equal",
+    "descriptionZh": "前于等于",
+    "snippet": "preceq",
+    "category": "relation"
+  },
+  {
+    "command": "succeq",
+    "description": "succeeds or equal",
+    "descriptionZh": "后于等于",
+    "snippet": "succeq",
+    "category": "relation"
+  },
+  {
+    "command": "ll",
+    "description": "much less than",
+    "descriptionZh": "远小于",
+    "snippet": "ll",
+    "category": "relation"
+  },
+  {
+    "command": "gg",
+    "description": "much greater than",
+    "descriptionZh": "远大于",
+    "snippet": "gg",
+    "category": "relation"
+  },
+  {
+    "command": "subset",
+    "description": "subset",
+    "descriptionZh": "子集",
+    "snippet": "subset",
+    "category": "relation"
+  },
+  {
+    "command": "supset",
+    "description": "superset",
+    "descriptionZh": "超集",
+    "snippet": "supset",
+    "category": "relation"
+  },
+  {
+    "command": "subseteq",
+    "description": "subset or equal",
+    "descriptionZh": "子集等于",
+    "snippet": "subseteq",
+    "category": "relation"
+  },
+  {
+    "command": "supseteq",
+    "description": "superset or equal",
+    "descriptionZh": "超集等于",
+    "snippet": "supseteq",
+    "category": "relation"
+  },
+  {
+    "command": "sqsubset",
+    "description": "square subset",
+    "descriptionZh": "方子集",
+    "snippet": "sqsubset",
+    "category": "relation"
+  },
+  {
+    "command": "sqsupset",
+    "description": "square superset",
+    "descriptionZh": "方超集",
+    "snippet": "sqsupset",
+    "category": "relation"
+  },
+  {
+    "command": "sqsubseteq",
+    "description": "square subset or equal",
+    "descriptionZh": "方子集等于",
+    "snippet": "sqsubseteq",
+    "category": "relation"
+  },
+  {
+    "command": "sqsupseteq",
+    "description": "square superset or equal",
+    "descriptionZh": "方超集等于",
+    "snippet": "sqsupseteq",
+    "category": "relation"
+  },
+  {
+    "command": "sim",
+    "description": "similar",
+    "descriptionZh": "相似",
+    "snippet": "sim",
+    "category": "relation"
+  },
+  {
+    "command": "simeq",
+    "description": "similar or equal",
+    "descriptionZh": "相似等于",
+    "snippet": "simeq",
+    "category": "relation"
+  },
+  {
+    "command": "approx",
+    "description": "approximately equal",
+    "descriptionZh": "约等于",
+    "snippet": "approx",
+    "category": "relation"
+  },
+  {
+    "command": "cong",
+    "description": "congruent",
+    "descriptionZh": "全等",
+    "snippet": "cong",
+    "category": "relation"
+  },
+  {
+    "command": "equiv",
+    "description": "equivalent",
+    "descriptionZh": "等价",
+    "snippet": "equiv",
+    "category": "relation"
+  },
+  {
+    "command": "doteq",
+    "description": "dot equal",
+    "descriptionZh": "点等于",
+    "snippet": "doteq",
+    "category": "relation"
+  },
+  {
+    "command": "neq",
+    "description": "not equal",
+    "descriptionZh": "不等于",
+    "snippet": "neq",
+    "category": "relation"
+  },
+  {
+    "command": "ne",
+    "description": "not equal",
+    "descriptionZh": "不等于",
+    "snippet": "ne",
+    "category": "relation"
+  },
+  {
+    "command": "propto",
+    "description": "proportional",
+    "descriptionZh": "正比于",
+    "snippet": "propto",
+    "category": "relation"
+  },
+  {
+    "command": "models",
+    "description": "models",
+    "descriptionZh": "模型",
+    "snippet": "models",
+    "category": "relation"
+  },
+  {
+    "command": "perp",
+    "description": "perpendicular",
+    "descriptionZh": "垂直",
+    "snippet": "perp",
+    "category": "relation"
+  },
+  {
+    "command": "mid",
+    "description": "divides",
+    "descriptionZh": "整除",
+    "snippet": "mid",
+    "category": "relation"
+  },
+  {
+    "command": "parallel",
+    "description": "parallel",
+    "descriptionZh": "平行",
+    "snippet": "parallel",
+    "category": "relation"
+  },
+  {
+    "command": "asymp",
+    "description": "asymptotic",
+    "descriptionZh": "渐近",
+    "snippet": "asymp",
+    "category": "relation"
+  },
+  {
+    "command": "bowtie",
+    "description": "bowtie",
+    "descriptionZh": "蝶形结",
+    "snippet": "bowtie",
+    "category": "relation"
+  },
+  {
+    "command": "vdash",
+    "description": "turnstile",
+    "descriptionZh": "证明turnstile",
+    "snippet": "vdash",
+    "category": "relation"
+  },
+  {
+    "command": "dashv",
+    "description": "reverse turnstile",
+    "descriptionZh": "反向turnstile",
+    "snippet": "dashv",
+    "category": "relation"
+  },
+  {
+    "command": "in",
+    "description": "element of",
+    "descriptionZh": "属于",
+    "snippet": "in",
+    "category": "relation"
+  },
+  {
+    "command": "ni",
+    "description": "contains as member",
+    "descriptionZh": "包含元素",
+    "snippet": "ni",
+    "category": "relation"
+  },
+  {
+    "command": "notin",
+    "description": "not an element of",
+    "descriptionZh": "不属于",
+    "snippet": "notin",
+    "category": "relation"
+  },
+  {
+    "command": "vdots",
+    "description": "vertical dots",
+    "descriptionZh": "竖向省略号",
+    "snippet": "vdots",
+    "category": "relation"
+  },
+  {
+    "command": "cdots",
+    "description": "centered dots",
+    "descriptionZh": "居中省略号",
+    "snippet": "cdots",
+    "category": "relation"
+  },
+  {
+    "command": "ddots",
+    "description": "diagonal dots",
+    "descriptionZh": "对角省略号",
+    "snippet": "ddots",
+    "category": "relation"
+  },
+  {
+    "command": "ldots",
+    "description": "low dots",
+    "descriptionZh": "底部省略号",
+    "snippet": "ldots",
+    "category": "relation"
+  },
+  {
+    "command": "leftarrow",
+    "description": "left arrow",
+    "descriptionZh": "左箭头",
+    "snippet": "leftarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "Leftarrow",
+    "description": "double left arrow",
+    "descriptionZh": "双线左箭头",
+    "snippet": "Leftarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "rightarrow",
+    "description": "right arrow",
+    "descriptionZh": "右箭头",
+    "snippet": "rightarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "Rightarrow",
+    "description": "double right arrow",
+    "descriptionZh": "双线右箭头",
+    "snippet": "Rightarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "leftrightarrow",
+    "description": "left-right arrow",
+    "descriptionZh": "左右箭头",
+    "snippet": "leftrightarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "Leftrightarrow",
+    "description": "double left-right arrow",
+    "descriptionZh": "双线左右箭头",
+    "snippet": "Leftrightarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "uparrow",
+    "description": "up arrow",
+    "descriptionZh": "上箭头",
+    "snippet": "uparrow",
+    "category": "arrow"
+  },
+  {
+    "command": "Uparrow",
+    "description": "double up arrow",
+    "descriptionZh": "双线上箭头",
+    "snippet": "Uparrow",
+    "category": "arrow"
+  },
+  {
+    "command": "downarrow",
+    "description": "down arrow",
+    "descriptionZh": "下箭头",
+    "snippet": "downarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "Downarrow",
+    "description": "double down arrow",
+    "descriptionZh": "双线下箭头",
+    "snippet": "Downarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "updownarrow",
+    "description": "up-down arrow",
+    "descriptionZh": "上下箭头",
+    "snippet": "updownarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "Updownarrow",
+    "description": "double up-down arrow",
+    "descriptionZh": "双线上下箭头",
+    "snippet": "Updownarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "longleftarrow",
+    "description": "long left arrow",
+    "descriptionZh": "长左箭头",
+    "snippet": "longleftarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "Longleftarrow",
+    "description": "long double left arrow",
+    "descriptionZh": "长双线左箭头",
+    "snippet": "Longleftarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "longrightarrow",
+    "description": "long right arrow",
+    "descriptionZh": "长右箭头",
+    "snippet": "longrightarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "Longrightarrow",
+    "description": "long double right arrow",
+    "descriptionZh": "长双线右箭头",
+    "snippet": "Longrightarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "longleftrightarrow",
+    "description": "long left-right arrow",
+    "descriptionZh": "长左右箭头",
+    "snippet": "longleftrightarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "Longleftrightarrow",
+    "description": "long double left-right arrow",
+    "descriptionZh": "长双线左右箭头",
+    "snippet": "Longleftrightarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "mapsto",
+    "description": "maps to",
+    "descriptionZh": "映射到",
+    "snippet": "mapsto",
+    "category": "arrow"
+  },
+  {
+    "command": "longmapsto",
+    "description": "long maps to",
+    "descriptionZh": "长映射到",
+    "snippet": "longmapsto",
+    "category": "arrow"
+  },
+  {
+    "command": "hookleftarrow",
+    "description": "hook left arrow",
+    "descriptionZh": "钩形左箭头",
+    "snippet": "hookleftarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "hookrightarrow",
+    "description": "hook right arrow",
+    "descriptionZh": "钩形右箭头",
+    "snippet": "hookrightarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "leftharpoonup",
+    "description": "left harpoon up",
+    "descriptionZh": "左上鱼叉箭头",
+    "snippet": "leftharpoonup",
+    "category": "arrow"
+  },
+  {
+    "command": "leftharpoondown",
+    "description": "left harpoon down",
+    "descriptionZh": "左下鱼叉箭头",
+    "snippet": "leftharpoondown",
+    "category": "arrow"
+  },
+  {
+    "command": "rightharpoonup",
+    "description": "right harpoon up",
+    "descriptionZh": "右上鱼叉箭头",
+    "snippet": "rightharpoonup",
+    "category": "arrow"
+  },
+  {
+    "command": "rightharpoondown",
+    "description": "right harpoon down",
+    "descriptionZh": "右下鱼叉箭头",
+    "snippet": "rightharpoondown",
+    "category": "arrow"
+  },
+  {
+    "command": "nearrow",
+    "description": "north-east arrow",
+    "descriptionZh": "东北箭头",
+    "snippet": "nearrow",
+    "category": "arrow"
+  },
+  {
+    "command": "searrow",
+    "description": "south-east arrow",
+    "descriptionZh": "东南箭头",
+    "snippet": "searrow",
+    "category": "arrow"
+  },
+  {
+    "command": "swarrow",
+    "description": "south-west arrow",
+    "descriptionZh": "西南箭头",
+    "snippet": "swarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "nwarrow",
+    "description": "north-west arrow",
+    "descriptionZh": "西北箭头",
+    "snippet": "nwarrow",
+    "category": "arrow"
+  },
+  {
+    "command": "frac",
+    "description": "fraction",
+    "descriptionZh": "分数",
+    "snippet": "frac{$1}{$2}",
+    "category": "construction"
+  },
+  {
+    "command": "dfrac",
+    "description": "display fraction",
+    "descriptionZh": "显示分数",
+    "snippet": "dfrac{$1}{$2}",
+    "category": "construction"
+  },
+  {
+    "command": "tfrac",
+    "description": "text fraction",
+    "descriptionZh": "文本分数",
+    "snippet": "tfrac{$1}{$2}",
+    "category": "construction"
+  },
+  {
+    "command": "sqrt",
+    "description": "square root",
+    "descriptionZh": "平方根",
+    "snippet": "sqrt{$1}",
+    "category": "construction"
+  },
+  {
+    "command": "sum",
+    "description": "summation",
+    "descriptionZh": "求和",
+    "snippet": "sum",
+    "category": "construction"
+  },
+  {
+    "command": "prod",
+    "description": "product",
+    "descriptionZh": "连乘",
+    "snippet": "prod",
+    "category": "construction"
+  },
+  {
+    "command": "coprod",
+    "description": "coproduct",
+    "descriptionZh": "余积",
+    "snippet": "coprod",
+    "category": "construction"
+  },
+  {
+    "command": "int",
+    "description": "integral",
+    "descriptionZh": "积分",
+    "snippet": "int",
+    "category": "construction"
+  },
+  {
+    "command": "iint",
+    "description": "double integral",
+    "descriptionZh": "二重积分",
+    "snippet": "iint",
+    "category": "construction"
+  },
+  {
+    "command": "iiint",
+    "description": "triple integral",
+    "descriptionZh": "三重积分",
+    "snippet": "iiint",
+    "category": "construction"
+  },
+  {
+    "command": "oint",
+    "description": "contour integral",
+    "descriptionZh": "环路积分",
+    "snippet": "oint",
+    "category": "construction"
+  },
+  {
+    "command": "bigint",
+    "description": "big integral",
+    "descriptionZh": "大积分号",
+    "snippet": "bigint",
+    "category": "construction"
+  },
+  {
+    "command": "bigsum",
+    "description": "big summation",
+    "descriptionZh": "大求和号",
+    "snippet": "bigsum",
+    "category": "construction"
+  },
+  {
+    "command": "lim",
+    "description": "limit",
+    "descriptionZh": "极限",
+    "snippet": "lim",
+    "category": "construction"
+  },
+  {
+    "command": "sup",
+    "description": "supremum",
+    "descriptionZh": "上确界",
+    "snippet": "sup",
+    "category": "construction"
+  },
+  {
+    "command": "inf",
+    "description": "infimum",
+    "descriptionZh": "下确界",
+    "snippet": "inf",
+    "category": "construction"
+  },
+  {
+    "command": "max",
+    "description": "maximum",
+    "descriptionZh": "最大值",
+    "snippet": "max",
+    "category": "construction"
+  },
+  {
+    "command": "min",
+    "description": "minimum",
+    "descriptionZh": "最小值",
+    "snippet": "min",
+    "category": "construction"
+  },
+  {
+    "command": "binom",
+    "description": "binomial coefficient",
+    "descriptionZh": "二项式系数",
+    "snippet": "binom{$1}{$2}",
+    "category": "construction"
+  },
+  {
+    "command": "tbinom",
+    "description": "text binomial",
+    "descriptionZh": "文本二项式",
+    "snippet": "tbinom{$1}{$2}",
+    "category": "construction"
+  },
+  {
+    "command": "dbinom",
+    "description": "display binomial",
+    "descriptionZh": "显示二项式",
+    "snippet": "dbinom{$1}{$2}",
+    "category": "construction"
+  },
+  {
+    "command": "overline",
+    "description": "overline",
+    "descriptionZh": "上划线",
+    "snippet": "overline{$1}",
+    "category": "construction"
+  },
+  {
+    "command": "underline",
+    "description": "underline",
+    "descriptionZh": "下划线",
+    "snippet": "underline{$1}",
+    "category": "construction"
+  },
+  {
+    "command": "overbrace",
+    "description": "overbrace",
+    "descriptionZh": "上花括号",
+    "snippet": "overbrace{$1}",
+    "category": "construction"
+  },
+  {
+    "command": "underbrace",
+    "description": "underbrace",
+    "descriptionZh": "下花括号",
+    "snippet": "underbrace{$1}",
+    "category": "construction"
+  },
+  {
+    "command": "stackrel",
+    "description": "stack relation",
+    "descriptionZh": "堆叠关系",
+    "snippet": "stackrel{$1}{$2}",
+    "category": "construction"
+  },
+  {
+    "command": "left",
+    "description": "left delimiter",
+    "descriptionZh": "左定界符",
+    "snippet": "left$1",
+    "category": "delimiter"
+  },
+  {
+    "command": "right",
+    "description": "right delimiter",
+    "descriptionZh": "右定界符",
+    "snippet": "right$1",
+    "category": "delimiter"
+  },
+  {
+    "command": "langle",
+    "description": "left angle bracket",
+    "descriptionZh": "左尖括号",
+    "snippet": "langle",
+    "category": "delimiter"
+  },
+  {
+    "command": "rangle",
+    "description": "right angle bracket",
+    "descriptionZh": "右尖括号",
+    "snippet": "rangle",
+    "category": "delimiter"
+  },
+  {
+    "command": "lceil",
+    "description": "left ceiling",
+    "descriptionZh": "左向上取整符",
+    "snippet": "lceil",
+    "category": "delimiter"
+  },
+  {
+    "command": "rceil",
+    "description": "right ceiling",
+    "descriptionZh": "右向上取整符",
+    "snippet": "rceil",
+    "category": "delimiter"
+  },
+  {
+    "command": "lfloor",
+    "description": "left floor",
+    "descriptionZh": "左向下取整符",
+    "snippet": "lfloor",
+    "category": "delimiter"
+  },
+  {
+    "command": "rfloor",
+    "description": "right floor",
+    "descriptionZh": "右向下取整符",
+    "snippet": "rfloor",
+    "category": "delimiter"
+  },
+  {
+    "command": "lvert",
+    "description": "left vertical bar",
+    "descriptionZh": "左竖线",
+    "snippet": "lvert",
+    "category": "delimiter"
+  },
+  {
+    "command": "rvert",
+    "description": "right vertical bar",
+    "descriptionZh": "右竖线",
+    "snippet": "rvert",
+    "category": "delimiter"
+  },
+  {
+    "command": "hat",
+    "description": "hat accent",
+    "descriptionZh": "帽子重音",
+    "snippet": "hat{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "check",
+    "description": "check accent",
+    "descriptionZh": "勾号重音",
+    "snippet": "check{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "breve",
+    "description": "breve accent",
+    "descriptionZh": "短音重音",
+    "snippet": "breve{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "acute",
+    "description": "acute accent",
+    "descriptionZh": "尖音重音",
+    "snippet": "acute{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "grave",
+    "description": "grave accent",
+    "descriptionZh": "重音重音",
+    "snippet": "grave{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "tilde",
+    "description": "tilde accent",
+    "descriptionZh": "波浪重音",
+    "snippet": "tilde{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "bar",
+    "description": "bar accent",
+    "descriptionZh": "横线重音",
+    "snippet": "bar{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "vec",
+    "description": "vector accent",
+    "descriptionZh": "向量重音",
+    "snippet": "vec{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "dot",
+    "description": "dot accent",
+    "descriptionZh": "点重音",
+    "snippet": "dot{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "ddot",
+    "description": "double dot accent",
+    "descriptionZh": "双点重音",
+    "snippet": "ddot{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "widehat",
+    "description": "wide hat accent",
+    "descriptionZh": "宽帽子重音",
+    "snippet": "widehat{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "widetilde",
+    "description": "wide tilde accent",
+    "descriptionZh": "宽波浪重音",
+    "snippet": "widetilde{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "overrightarrow",
+    "description": "right arrow over",
+    "descriptionZh": "上方右箭头",
+    "snippet": "overrightarrow{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "overleftarrow",
+    "description": "left arrow over",
+    "descriptionZh": "上方左箭头",
+    "snippet": "overleftarrow{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "mathring",
+    "description": "ring accent",
+    "descriptionZh": "圆环重音",
+    "snippet": "mathring{$1}",
+    "category": "accent"
+  },
+  {
+    "command": "sin",
+    "description": "sine",
+    "descriptionZh": "正弦",
+    "snippet": "sin",
+    "category": "function"
+  },
+  {
+    "command": "cos",
+    "description": "cosine",
+    "descriptionZh": "余弦",
+    "snippet": "cos",
+    "category": "function"
+  },
+  {
+    "command": "tan",
+    "description": "tangent",
+    "descriptionZh": "正切",
+    "snippet": "tan",
+    "category": "function"
+  },
+  {
+    "command": "cot",
+    "description": "cotangent",
+    "descriptionZh": "余切",
+    "snippet": "cot",
+    "category": "function"
+  },
+  {
+    "command": "sec",
+    "description": "secant",
+    "descriptionZh": "正割",
+    "snippet": "sec",
+    "category": "function"
+  },
+  {
+    "command": "csc",
+    "description": "cosecant",
+    "descriptionZh": "余割",
+    "snippet": "csc",
+    "category": "function"
+  },
+  {
+    "command": "arcsin",
+    "description": "arcsine",
+    "descriptionZh": "反正弦",
+    "snippet": "arcsin",
+    "category": "function"
+  },
+  {
+    "command": "arccos",
+    "description": "arccosine",
+    "descriptionZh": "反余弦",
+    "snippet": "arccos",
+    "category": "function"
+  },
+  {
+    "command": "arctan",
+    "description": "arctangent",
+    "descriptionZh": "反正切",
+    "snippet": "arctan",
+    "category": "function"
+  },
+  {
+    "command": "sinh",
+    "description": "hyperbolic sine",
+    "descriptionZh": "双曲正弦",
+    "snippet": "sinh",
+    "category": "function"
+  },
+  {
+    "command": "cosh",
+    "description": "hyperbolic cosine",
+    "descriptionZh": "双曲余弦",
+    "snippet": "cosh",
+    "category": "function"
+  },
+  {
+    "command": "tanh",
+    "description": "hyperbolic tangent",
+    "descriptionZh": "双曲正切",
+    "snippet": "tanh",
+    "category": "function"
+  },
+  {
+    "command": "log",
+    "description": "logarithm",
+    "descriptionZh": "对数",
+    "snippet": "log",
+    "category": "function"
+  },
+  {
+    "command": "ln",
+    "description": "natural logarithm",
+    "descriptionZh": "自然对数",
+    "snippet": "ln",
+    "category": "function"
+  },
+  {
+    "command": "exp",
+    "description": "exponential",
+    "descriptionZh": "指数",
+    "snippet": "exp",
+    "category": "function"
+  },
+  {
+    "command": "det",
+    "description": "determinant",
+    "descriptionZh": "行列式",
+    "snippet": "det",
+    "category": "function"
+  },
+  {
+    "command": "dim",
+    "description": "dimension",
+    "descriptionZh": "维数",
+    "snippet": "dim",
+    "category": "function"
+  },
+  {
+    "command": "ker",
+    "description": "kernel",
+    "descriptionZh": "核",
+    "snippet": "ker",
+    "category": "function"
+  },
+  {
+    "command": "deg",
+    "description": "degree",
+    "descriptionZh": "度数",
+    "snippet": "deg",
+    "category": "function"
+  },
+  {
+    "command": "gcd",
+    "description": "greatest common divisor",
+    "descriptionZh": "最大公约数",
+    "snippet": "gcd",
+    "category": "function"
+  },
+  {
+    "command": "arg",
+    "description": "argument",
+    "descriptionZh": "辐角",
+    "snippet": "arg",
+    "category": "function"
+  },
+  {
+    "command": "limsup",
+    "description": "limit superior",
+    "descriptionZh": "上极限",
+    "snippet": "limsup",
+    "category": "function"
+  },
+  {
+    "command": "liminf",
+    "description": "limit inferior",
+    "descriptionZh": "下极限",
+    "snippet": "liminf",
+    "category": "function"
+  },
+  {
+    "command": "Pr",
+    "description": "probability",
+    "descriptionZh": "概率",
+    "snippet": "Pr",
+    "category": "function"
+  },
+  {
+    "command": "bmod",
+    "description": "binary modulo",
+    "descriptionZh": "二元取模",
+    "snippet": "bmod",
+    "category": "function"
+  },
+  {
+    "command": "pmod",
+    "description": "parenthetical modulo",
+    "descriptionZh": "圆括号取模",
+    "snippet": "pmod{$1}",
+    "category": "function"
+  },
+  {
+    "command": "infty",
+    "description": "infinity",
+    "descriptionZh": "无穷大",
+    "snippet": "infty",
+    "category": "symbol"
+  },
+  {
+    "command": "partial",
+    "description": "partial derivative",
+    "descriptionZh": "偏导数",
+    "snippet": "partial",
+    "category": "symbol"
+  },
+  {
+    "command": "nabla",
+    "description": "nabla",
+    "descriptionZh": "梯度算子",
+    "snippet": "nabla",
+    "category": "symbol"
+  },
+  {
+    "command": "forall",
+    "description": "for all",
+    "descriptionZh": "任意",
+    "snippet": "forall",
+    "category": "symbol"
+  },
+  {
+    "command": "exists",
+    "description": "exists",
+    "descriptionZh": "存在",
+    "snippet": "exists",
+    "category": "symbol"
+  },
+  {
+    "command": "nexists",
+    "description": "not exists",
+    "descriptionZh": "不存在",
+    "snippet": "nexists",
+    "category": "symbol"
+  },
+  {
+    "command": "neg",
+    "description": "negation",
+    "descriptionZh": "否定",
+    "snippet": "neg",
+    "category": "symbol"
+  },
+  {
+    "command": "lnot",
+    "description": "logical not",
+    "descriptionZh": "逻辑非",
+    "snippet": "lnot",
+    "category": "symbol"
+  },
+  {
+    "command": "land",
+    "description": "logical and",
+    "descriptionZh": "逻辑与",
+    "snippet": "land",
+    "category": "symbol"
+  },
+  {
+    "command": "lor",
+    "description": "logical or",
+    "descriptionZh": "逻辑或",
+    "snippet": "lor",
+    "category": "symbol"
+  },
+  {
+    "command": "top",
+    "description": "top",
+    "descriptionZh": "顶",
+    "snippet": "top",
+    "category": "symbol"
+  },
+  {
+    "command": "bot",
+    "description": "bottom",
+    "descriptionZh": "底",
+    "snippet": "bot",
+    "category": "symbol"
+  },
+  {
+    "command": "emptyset",
+    "description": "empty set",
+    "descriptionZh": "空集",
+    "snippet": "emptyset",
+    "category": "symbol"
+  },
+  {
+    "command": "varnothing",
+    "description": "variant empty set",
+    "descriptionZh": "变体空集",
+    "snippet": "varnothing",
+    "category": "symbol"
+  },
+  {
+    "command": "aleph",
+    "description": "aleph",
+    "descriptionZh": "阿列夫",
+    "snippet": "aleph",
+    "category": "symbol"
+  },
+  {
+    "command": "beth",
+    "description": "beth",
+    "descriptionZh": "贝斯",
+    "snippet": "beth",
+    "category": "symbol"
+  },
+  {
+    "command": "hbar",
+    "description": "h-bar",
+    "descriptionZh": "约化普朗克常数",
+    "snippet": "hbar",
+    "category": "symbol"
+  },
+  {
+    "command": "ell",
+    "description": "script l",
+    "descriptionZh": "花体l",
+    "snippet": "ell",
+    "category": "symbol"
+  },
+  {
+    "command": "imath",
+    "description": "dotless i",
+    "descriptionZh": "无点i",
+    "snippet": "imath",
+    "category": "symbol"
+  },
+  {
+    "command": "jmath",
+    "description": "dotless j",
+    "descriptionZh": "无点j",
+    "snippet": "jmath",
+    "category": "symbol"
+  },
+  {
+    "command": "Re",
+    "description": "real part",
+    "descriptionZh": "实部",
+    "snippet": "Re",
+    "category": "symbol"
+  },
+  {
+    "command": "Im",
+    "description": "imaginary part",
+    "descriptionZh": "虚部",
+    "snippet": "Im",
+    "category": "symbol"
+  },
+  {
+    "command": "wp",
+    "description": "Weierstrass p",
+    "descriptionZh": "魏尔斯特拉斯p",
+    "snippet": "wp",
+    "category": "symbol"
+  },
+  {
+    "command": "mho",
+    "description": "mho",
+    "descriptionZh": "姆欧",
+    "snippet": "mho",
+    "category": "symbol"
+  },
+  {
+    "command": "Box",
+    "description": "box",
+    "descriptionZh": "方框",
+    "snippet": "Box",
+    "category": "symbol"
+  },
+  {
+    "command": "Diamond",
+    "description": "diamond",
+    "descriptionZh": "菱形",
+    "snippet": "Diamond",
+    "category": "symbol"
+  },
+  {
+    "command": "clubsuit",
+    "description": "club suit",
+    "descriptionZh": "梅花",
+    "snippet": "clubsuit",
+    "category": "symbol"
+  },
+  {
+    "command": "diamondsuit",
+    "description": "diamond suit",
+    "descriptionZh": "方块",
+    "snippet": "diamondsuit",
+    "category": "symbol"
+  },
+  {
+    "command": "heartsuit",
+    "description": "heart suit",
+    "descriptionZh": "红心",
+    "snippet": "heartsuit",
+    "category": "symbol"
+  },
+  {
+    "command": "spadesuit",
+    "description": "spade suit",
+    "descriptionZh": "黑桃",
+    "snippet": "spadesuit",
+    "category": "symbol"
+  },
+  {
+    "command": "flat",
+    "description": "flat",
+    "descriptionZh": "降号",
+    "snippet": "flat",
+    "category": "symbol"
+  },
+  {
+    "command": "natural",
+    "description": "natural",
+    "descriptionZh": "还原号",
+    "snippet": "natural",
+    "category": "symbol"
+  },
+  {
+    "command": "sharp",
+    "description": "sharp",
+    "descriptionZh": "升号",
+    "snippet": "sharp",
+    "category": "symbol"
+  },
+  {
+    "command": "surd",
+    "description": "radical sign",
+    "descriptionZh": "根号",
+    "snippet": "surd",
+    "category": "symbol"
+  },
+  {
+    "command": "triangle",
+    "description": "triangle",
+    "descriptionZh": "三角形",
+    "snippet": "triangle",
+    "category": "symbol"
+  }
+]

@@ -1,0 +1,21 @@
+.latex-suggest-item {
+	display: flex;
+	align-items: baseline;
+	gap: 8px;
+	padding: 4px 8px;
+}
+
+.latex-suggest-command {
+	font-family: var(--font-monospace);
+	font-size: 0.9em;
+	color: var(--text-normal);
+	flex-shrink: 0;
+}
+
+.latex-suggest-desc {
+	color: var(--text-muted);
+	font-size: 0.85em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
