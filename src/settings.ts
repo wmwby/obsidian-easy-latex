@@ -71,6 +71,18 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
+			.setName("启用思考模式")
+			.setDesc("建议保持关闭，开启后模型会先进行推理再输出，生成 LaTeX 的时间会明显变长。仅对支持思考模式的模型生效。")
+			.addToggle((toggle) =>
+				toggle
+					.setValue(this.settings.aiEnableThinking)
+					.onChange(async (value) => {
+						this.settings.aiEnableThinking = value;
+						await this.onSave();
+					})
+			);
+
+		new Setting(containerEl)
 			.setName("测试连接")
 			.setDesc("发送测试请求验证 API 配置是否正确")
 			.addButton((btn) =>

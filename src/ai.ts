@@ -10,22 +10,10 @@ export interface ExtractResult {
 
 export function extractPromptText(
 	editor: Editor,
-	cursor: EditorPosition,
-	lastTabPos: EditorPosition | null
+	cursor: EditorPosition
 ): ExtractResult | null {
-	let start: EditorPosition;
-
-	if (
-		lastTabPos &&
-		(lastTabPos.line < cursor.line ||
-			(lastTabPos.line === cursor.line && lastTabPos.ch < cursor.ch))
-	) {
-		start = lastTabPos;
-	} else {
-		const zoneStart = findMathZoneStart(editor, cursor);
-		if (!zoneStart) return null;
-		start = zoneStart;
-	}
+	const start = findMathZoneStart(editor, cursor);
+	if (!start) return null;
 
 	// Extract text from start to cursor
 	let text = "";
@@ -53,6 +41,20 @@ export async function callAiApi(
 	if (!apiUrl.includes("/chat/completions")) {
 		apiUrl += "/chat/completions";
 	}
+
+	const body: Record<string, any> = {
+		model: settings.aiModel,
+		messages: [
+			{ role: "system", content: settings.aiSystemPrompt },
+			{ role: "user", content: text },
+		],
+		temperature: 0.1,
+	};
+
+	if (settings.aiEnableThinking) {
+		body.enable_thinking = true;
+	}
+
 	const response = await requestUrl({
 		url: apiUrl,
 		method: "POST",
@@ -60,14 +62,7 @@ export async function callAiApi(
 			"Content-Type": "application/json",
 			Authorization: `Bearer ${settings.aiApiKey}`,
 		},
-		body: JSON.stringify({
-			model: settings.aiModel,
-			messages: [
-				{ role: "system", content: settings.aiSystemPrompt },
-				{ role: "user", content: text },
-			],
-			temperature: 0.1,
-		}),
+		body: JSON.stringify(body),
 	});
 
 	const content = response.json.choices?.[0]?.message?.content;
