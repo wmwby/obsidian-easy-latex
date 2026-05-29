@@ -49,8 +49,12 @@ export async function callAiApi(
 	text: string,
 	settings: LatexAutocompleteSettings
 ): Promise<string> {
+	let apiUrl = settings.aiApiUrl.replace(/\/+$/, "");
+	if (!apiUrl.includes("/chat/completions")) {
+		apiUrl += "/chat/completions";
+	}
 	const response = await requestUrl({
-		url: settings.aiApiUrl,
+		url: apiUrl,
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

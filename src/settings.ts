@@ -20,7 +20,7 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("API URL")
-			.setDesc("OpenAI 兼容格式的 API 地址")
+			.setDesc("OpenAI 兼容格式的 API 地址（只需填到 /v1，会自动补全 /chat/completions）")
 			.addText((text) =>
 				text
 					.setPlaceholder("https://api.openai.com/v1/chat/completions")
