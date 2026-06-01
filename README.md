@@ -20,14 +20,14 @@ Press `Tab` on selected text inside a math zone, and the AI will convert your na
 
 ### Manual
 
-1. Download `main.js`, `styles.css`, and `manifest.json` from the [latest release](https://github.com/mingw/obsidian-easy-latex/releases)
+1. Download `main.js`, `styles.css`, and `manifest.json` from the [latest release](https://github.com/wmwby/obsidian-easy-latex/releases)
 2. Create a folder `latex-autocomplete` inside your vault's `.obsidian/plugins/` directory
 3. Copy the three files into that folder
 4. Enable the plugin in Obsidian Settings → Community Plugins
 
 ### BRAT
 
-Add `https://github.com/mingw/obsidian-easy-latex` to BRAT's beta plugin list.
+Add `https://github.com/wmwby/obsidian-easy-latex` to BRAT's beta plugin list.
 
 ## AI Configuration
 

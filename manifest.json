@@ -1,7 +1,7 @@
 {
   "id": "easy-latex",
   "name": "Easy LaTeX",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "minAppVersion": "0.15.0",
   "description": "Autocomplete LaTeX commands with Chinese/English support in math contexts.",
   "author": "mingw",
