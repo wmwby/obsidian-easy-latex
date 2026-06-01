@@ -1,6 +1,4 @@
-import { EditorPosition, Notice, Plugin } from "obsidian";
-import { keymap, EditorView } from "@codemirror/view";
-import { Prec } from "@codemirror/state";
+import { Notice, Plugin } from "obsidian";
 import { LatexSuggest } from "./src/suggest";
 import { DEFAULT_SETTINGS, LatexAutocompleteSettings, LatexCommand } from "./src/types";
 import { callAiApi, extractPromptText } from "./src/ai";
@@ -12,7 +10,6 @@ import rawSymbols from "./data/raw-symbols.json";
 
 export default class LatexAutocompletePlugin extends Plugin {
 	settings: LatexAutocompleteSettings = DEFAULT_SETTINGS;
-	private lastTabPos: EditorPosition | null = null;
 
 	async onload() {
 		await this.loadSettings();
@@ -25,16 +22,18 @@ export default class LatexAutocompletePlugin extends Plugin {
 			new LatexSuggest(this.app, commands, chineseMap, rawMap)
 		);
 
-		this.registerEditorExtension(
-			Prec.high(
-				keymap.of([
-					{
-						key: "Tab",
-						run: (_view: EditorView) => this.handleTab(),
-					},
-				])
-			)
-		);
+		// Use DOM capture-phase listener because CM6 keymap doesn't
+		// fire for inline math in Live Preview mode
+		const tabHandler = (evt: KeyboardEvent) => {
+			if (evt.key === "Tab" && !evt.ctrlKey && !evt.altKey && !evt.metaKey) {
+				if (this.handleTab()) {
+					evt.preventDefault();
+					evt.stopPropagation();
+				}
+			}
+		};
+		document.addEventListener("keydown", tabHandler, true);
+		this.register(() => document.removeEventListener("keydown", tabHandler, true));
 
 		this.addSettingTab(
 			new LatexAutocompleteSettingTab(this.app, this, this.settings, () =>
@@ -63,7 +62,7 @@ export default class LatexAutocompletePlugin extends Plugin {
 
 		if (!isInMathContext(editor, cursor)) return false;
 
-		const result = extractPromptText(editor, cursor, this.lastTabPos);
+		const result = extractPromptText(editor, cursor);
 		if (!result) return false;
 
 		const notice = new Notice("正在生成 LaTeX...", 0);
@@ -71,11 +70,10 @@ export default class LatexAutocompletePlugin extends Plugin {
 		callAiApi(result.text, this.settings)
 			.then((latex) => {
 				editor.replaceRange(latex, result.start, result.end);
-				this.lastTabPos = {
+				editor.setCursor({
 					line: result.start.line,
 					ch: result.start.ch + latex.length,
-				};
-				editor.setCursor(this.lastTabPos);
+				});
 				notice.hide();
 				new Notice("已生成", 2000);
 			})

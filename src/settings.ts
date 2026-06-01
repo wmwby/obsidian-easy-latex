@@ -20,7 +20,7 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("API URL")
-			.setDesc("OpenAI 兼容格式的 API 地址")
+			.setDesc("OpenAI 兼容格式的 API 地址（只需填到 /v1，会自动补全 /chat/completions）")
 			.addText((text) =>
 				text
 					.setPlaceholder("https://api.openai.com/v1/chat/completions")
@@ -66,6 +66,18 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 					.setValue(this.settings.aiSystemPrompt)
 					.onChange(async (value) => {
 						this.settings.aiSystemPrompt = value;
+						await this.onSave();
+					})
+			);
+
+		new Setting(containerEl)
+			.setName("启用思考模式")
+			.setDesc("建议保持关闭，开启后模型会先进行推理再输出，生成 LaTeX 的时间会明显变长。仅对支持思考模式的模型生效。")
+			.addToggle((toggle) =>
+				toggle
+					.setValue(this.settings.aiEnableThinking)
+					.onChange(async (value) => {
+						this.settings.aiEnableThinking = value;
 						await this.onSave();
 					})
 			);

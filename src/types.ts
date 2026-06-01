@@ -21,6 +21,7 @@ export interface LatexAutocompleteSettings {
 	aiApiKey: string;
 	aiModel: string;
 	aiSystemPrompt: string;
+	aiEnableThinking: boolean;
 }
 
 export const DEFAULT_SETTINGS: LatexAutocompleteSettings = {
@@ -28,9 +29,10 @@ export const DEFAULT_SETTINGS: LatexAutocompleteSettings = {
 	aiApiKey: "",
 	aiModel: "gpt-4o-mini",
 	aiSystemPrompt: `你是 LaTeX 数学公式转换器。将用户的数学描述转换为 LaTeX 代码。
-规则：
-1. 只返回纯 LaTeX 代码，不要解释
-2. 不要用 markdown 代码块包裹
-3. 不要包含 $ 或 $$ 分隔符
-4. 保持数学语义的准确性`,
+	规则：
+	1. 只返回纯 LaTeX 代码，不要解释
+	2. 不要用 markdown 代码块包裹
+	3. 不要包含 $ 或 $$ 分隔符
+	4. 保持数学语义的准确性`,
+	aiEnableThinking: false,
 };
