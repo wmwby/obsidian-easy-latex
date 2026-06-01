@@ -1,9 +1,9 @@
 {
   "id": "latex-autocomplete",
   "name": "LaTeX Autocomplete",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "minAppVersion": "0.15.0",
-  "description": "LaTeX auto-completion with Chinese/English support in math contexts",
+  "description": "Autocomplete LaTeX commands with Chinese/English support in math contexts.",
   "author": "mingw",
   "isDesktopOnly": false
 }

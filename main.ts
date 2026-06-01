@@ -79,7 +79,7 @@ export default class LatexAutocompletePlugin extends Plugin {
 			})
 			.catch((err) => {
 				notice.hide();
-				new Notice("AI 生成失败: " + (err.message || err), 5000);
+				new Notice("AI 生成失败: " + String(err), 5000);
 			});
 
 		return true;

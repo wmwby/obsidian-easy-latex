@@ -93,7 +93,7 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 						const result = await callAiApi("1+1等于几", this.settings);
 						new Notice("连接成功: " + result, 4000);
 					} catch (err: any) {
-						new Notice("连接失败: " + (err.message || err), 5000);
+						new Notice("连接失败: " + String(err), 5000);
 					}
 					btn.setButtonText("测试");
 					btn.setDisabled(false);

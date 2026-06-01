@@ -1,4 +1,5 @@
 import {
+	App,
 	Editor,
 	EditorPosition,
 	EditorSuggest,
@@ -17,7 +18,7 @@ export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 	private commandMap: Map<string, LatexCommand>;
 
 	constructor(
-		app: any,
+		app: App,
 		commands: LatexCommand[],
 		chineseMap: Record<string, string[]>,
 		rawMap: Record<string, string[]>
@@ -31,7 +32,6 @@ export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 			this.commandMap.set(cmd.command, cmd);
 		}
 		this.limit = 25;
-		console.log("[LaTeX Autocomplete] Loaded", commands.length, "commands,", Object.keys(chineseMap).length, "Chinese keywords,", Object.keys(rawMap).length, "raw symbols");
 	}
 
 	onTrigger(
