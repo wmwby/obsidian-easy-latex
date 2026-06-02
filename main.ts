@@ -7,6 +7,7 @@ import { LatexAutocompleteSettingTab } from "./src/settings";
 import chineseKeywords from "./data/chinese-keywords.json";
 import latexCommands from "./data/latex-commands.json";
 import rawSymbols from "./data/raw-symbols.json";
+import { t } from "./src/i18n";
 
 export default class LatexAutocompletePlugin extends Plugin {
 	settings: LatexAutocompleteSettings = DEFAULT_SETTINGS;
@@ -65,7 +66,7 @@ export default class LatexAutocompletePlugin extends Plugin {
 		const result = extractPromptText(editor, cursor);
 		if (!result) return false;
 
-		const notice = new Notice("正在生成 LaTeX...", 0);
+		const notice = new Notice(t('notice.generating'), 0);
 
 		callAiApi(result.text, this.settings)
 			.then((latex) => {
@@ -75,11 +76,11 @@ export default class LatexAutocompletePlugin extends Plugin {
 					ch: result.start.ch + latex.length,
 				});
 				notice.hide();
-				new Notice("已生成", 2000);
+				new Notice(t('notice.generated'), 2000);
 			})
 			.catch((err) => {
 				notice.hide();
-				new Notice("AI 生成失败: " + String(err), 5000);
+				new Notice(t('notice.aiFail') + String(err), 5000);
 			});
 
 		return true;
