@@ -1,6 +1,7 @@
 import { App, Notice, Plugin, PluginSettingTab, Setting } from "obsidian";
 import { LatexAutocompleteSettings } from "./types";
 import { callAiApi } from "./ai";
+import { t } from './i18n';
 
 export class LatexAutocompleteSettingTab extends PluginSettingTab {
 	private settings: LatexAutocompleteSettings;
@@ -16,14 +17,14 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 		const { containerEl } = this;
 		containerEl.empty();
 
-		containerEl.createEl("h2", { text: "LaTeX Autocomplete - AI 设置" });
+		containerEl.createEl("h2", { text: t('settings.title') });
 
 		new Setting(containerEl)
-			.setName("API URL")
-			.setDesc("OpenAI 兼容格式的 API 地址（只需填到 /v1，会自动补全 /chat/completions）")
+			.setName(t('settings.apiUrl.name'))
+			.setDesc(t('settings.apiUrl.desc'))
 			.addText((text) =>
 				text
-					.setPlaceholder("https://api.openai.com/v1/chat/completions")
+					.setPlaceholder(t('settings.apiUrl.placeholder'))
 					.setValue(this.settings.aiApiUrl)
 					.onChange(async (value) => {
 						this.settings.aiApiUrl = value;
@@ -33,9 +34,9 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("API Key")
-			.setDesc("你的 API 密钥")
+			.setDesc(t('settings.apiKey.desc'))
 			.addText((text) => {
-				text.setPlaceholder("sk-...")
+				text.setPlaceholder(t('settings.apiKey.placeholder'))
 					.setValue(this.settings.aiApiKey)
 					.onChange(async (value) => {
 						this.settings.aiApiKey = value;
@@ -46,10 +47,10 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Model")
-			.setDesc("模型名称（如 gpt-4o-mini、deepseek-chat 等）")
+			.setDesc(t('settings.model.desc'))
 			.addText((text) =>
 				text
-					.setPlaceholder("gpt-4o-mini")
+					.setPlaceholder(t('settings.model.placeholder'))
 					.setValue(this.settings.aiModel)
 					.onChange(async (value) => {
 						this.settings.aiModel = value;
@@ -59,10 +60,10 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("System Prompt")
-			.setDesc("发送给 AI 的系统提示词")
+			.setDesc(t('settings.systemPrompt.desc'))
 			.addTextArea((text) =>
 				text
-					.setPlaceholder("你是 LaTeX 数学公式转换器...")
+					.setPlaceholder(t('settings.systemPrompt.placeholder'))
 					.setValue(this.settings.aiSystemPrompt)
 					.onChange(async (value) => {
 						this.settings.aiSystemPrompt = value;
@@ -71,8 +72,8 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName("启用思考模式")
-			.setDesc("建议保持关闭，开启后模型会先进行推理再输出，生成 LaTeX 的时间会明显变长。仅对支持思考模式的模型生效。")
+			.setName(t('settings.thinking.name'))
+			.setDesc(t('settings.thinking.desc'))
 			.addToggle((toggle) =>
 				toggle
 					.setValue(this.settings.aiEnableThinking)
@@ -83,19 +84,19 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName("测试连接")
-			.setDesc("发送测试请求验证 API 配置是否正确")
+			.setName(t('settings.test.name'))
+			.setDesc(t('settings.test.desc'))
 			.addButton((btn) =>
-				btn.setButtonText("测试").onClick(async () => {
-					btn.setButtonText("测试中...");
+				btn.setButtonText(t('settings.test.button')).onClick(async () => {
+					btn.setButtonText(t('settings.test.running'));
 					btn.setDisabled(true);
 					try {
 						const result = await callAiApi("1+1等于几", this.settings);
-						new Notice("连接成功: " + result, 4000);
+						new Notice(t('notice.success') + result, 4000);
 					} catch (err: any) {
-						new Notice("连接失败: " + String(err), 5000);
+						new Notice(t('notice.fail') + String(err), 5000);
 					}
-					btn.setButtonText("测试");
+					btn.setButtonText(t('settings.test.button'));
 					btn.setDisabled(false);
 				})
 			);
