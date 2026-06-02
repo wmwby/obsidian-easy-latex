@@ -9,6 +9,13 @@ import latexCommands from "./data/latex-commands.json";
 import rawSymbols from "./data/raw-symbols.json";
 import { t } from "./src/i18n";
 
+const LEGACY_DEFAULT_PROMPT = `你是 LaTeX 数学公式转换器。将用户的数学描述转换为 LaTeX 代码。
+	规则：
+	1. 只返回纯 LaTeX 代码，不要解释
+	2. 不要用 markdown 代码块包裹
+	3. 不要包含 $ 或 $$ 分隔符
+	4. 保持数学语义的准确性`;
+
 export default class LatexAutocompletePlugin extends Plugin {
 	settings: LatexAutocompleteSettings = DEFAULT_SETTINGS;
 
@@ -47,6 +54,9 @@ export default class LatexAutocompletePlugin extends Plugin {
 
 	async loadSettings() {
 		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+		if (!this.settings.aiSystemPrompt || this.settings.aiSystemPrompt === LEGACY_DEFAULT_PROMPT) {
+			this.settings.aiSystemPrompt = t('defaultPrompt');
+		}
 	}
 
 	async saveSettings() {

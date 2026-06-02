@@ -1,5 +1,3 @@
-import { t } from './i18n';
-
 export interface LatexCommand {
 	command: string;
 	description: string;
@@ -30,6 +28,6 @@ export const DEFAULT_SETTINGS: LatexAutocompleteSettings = {
 	aiApiUrl: "https://api.openai.com/v1/chat/completions",
 	aiApiKey: "",
 	aiModel: "gpt-4o-mini",
-	aiSystemPrompt: t('defaultPrompt'),
+	aiSystemPrompt: "",
 	aiEnableThinking: false,
 };
