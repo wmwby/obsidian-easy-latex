@@ -18,20 +18,22 @@ Press `Tab` on selected text inside a math zone, and the AI will convert your na
 
 ## Installation
 
+### Obsidian Community Plugin Store
+
+1. Open Obsidian Settings → Community Plugins
+2. Click **Browse** and search for **"Easy LaTeX"**
+3. Click **Install**, then **Enable**
+
 ### Manual
 
 1. Download `main.js`, `styles.css`, and `manifest.json` from the [latest release](https://github.com/wmwby/obsidian-easy-latex/releases)
-2. Create a folder `latex-autocomplete` inside your vault's `.obsidian/plugins/` directory
+2. Create a folder `easy-latex` inside your vault's `.obsidian/plugins/` directory
 3. Copy the three files into that folder
 4. Enable the plugin in Obsidian Settings → Community Plugins
 
-### BRAT
-
-Add `https://github.com/wmwby/obsidian-easy-latex` to BRAT's beta plugin list.
-
 ## AI Configuration
 
-Go to Settings → LaTeX Autocomplete to configure:
+Go to Settings → Easy LaTeX to configure:
 
 | Setting | Description | Default |
 |---------|-------------|---------|
