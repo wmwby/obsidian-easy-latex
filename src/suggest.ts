@@ -9,24 +9,27 @@ import {
 } from "obsidian";
 import { isInMathContext } from "./mathContext";
 import { matchSuggestions } from "./matcher";
-import { LatexCommand, LatexSuggestion } from "./types";
+import { LatexCommand, LatexSuggestion, LatexAutocompleteSettings } from "./types";
 
 export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 	private commands: LatexCommand[];
 	private chineseMap: Record<string, string[]>;
 	private rawMap: Record<string, string[]>;
 	private commandMap: Map<string, LatexCommand>;
+	private getSettings: () => LatexAutocompleteSettings;
 
 	constructor(
 		app: App,
 		commands: LatexCommand[],
 		chineseMap: Record<string, string[]>,
-		rawMap: Record<string, string[]>
+		rawMap: Record<string, string[]>,
+		getSettings: () => LatexAutocompleteSettings
 	) {
 		super(app);
 		this.commands = commands;
 		this.chineseMap = chineseMap;
 		this.rawMap = rawMap;
+		this.getSettings = getSettings;
 		this.commandMap = new Map();
 		for (const cmd of commands) {
 			this.commandMap.set(cmd.command, cmd);
@@ -77,18 +80,34 @@ export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 	}
 
 	getSuggestions(context: EditorSuggestContext): LatexSuggestion[] {
+		const settings = this.getSettings();
 		const results = matchSuggestions(
 			context.query,
 			this.commands,
 			this.chineseMap,
 			this.commandMap,
-			this.rawMap
+			this.rawMap,
+			settings.customMappings ?? []
 		);
 		return results;
 	}
 
 	renderSuggestion(suggestion: LatexSuggestion, el: HTMLElement): void {
 		const container = el.createDiv({ cls: "latex-suggest-item" });
+
+		if (suggestion.isCustom) {
+			container.createEl("code", {
+				cls: "latex-suggest-command",
+				text: suggestion.displayText,
+			});
+			if (suggestion.descriptionZh) {
+				container.createSpan({
+					cls: "latex-suggest-desc",
+					text: suggestion.descriptionZh,
+				});
+			}
+			return;
+		}
 
 		container.createEl("code", {
 			cls: "latex-suggest-command",
@@ -121,6 +140,53 @@ export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 				context.start,
 				context.end
 			);
+			return;
+		}
+
+		// Custom mapping: replace with snippet as-is (user controls backslash)
+		if (suggestion.isCustom) {
+			const replacement = suggestion.snippet;
+
+			if (!replacement.includes("$1")) {
+				context.editor.replaceRange(
+					replacement,
+					context.start,
+					context.end
+				);
+				return;
+			}
+
+			let firstTabstopOffset = Infinity;
+			let cleanOffset = 0;
+			let i = 0;
+			while (i < replacement.length) {
+				const remaining = replacement.substring(i);
+				const m = remaining.match(/^\$(\d+)/);
+				if (m) {
+					if (
+						parseInt(m[1]) === 1 &&
+						cleanOffset < firstTabstopOffset
+					) {
+						firstTabstopOffset = cleanOffset;
+					}
+					i += m[0].length;
+				} else {
+					cleanOffset++;
+					i++;
+				}
+			}
+
+			const cleanReplacement = replacement.replace(/\$\d+/g, "");
+			context.editor.replaceRange(
+				cleanReplacement,
+				context.start,
+				context.end
+			);
+
+			context.editor.setCursor({
+				line: context.start.line,
+				ch: context.start.ch + firstTabstopOffset,
+			});
 			return;
 		}
 

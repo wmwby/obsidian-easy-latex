@@ -20,6 +20,17 @@ const zhCn: Record<string, string> = {
 	'settings.test.button': '测试',
 	'settings.test.running': '测试中...',
 
+		// Custom mappings
+		'settings.customMappings.title': '自定义关键词映射',
+		'settings.customMappings.desc': '添加自定义关键词到 LaTeX 片段的映射。拉丁关键词在数学模式下输入 \\keyword 触发；中文关键词直接输入触发。用 $1, $2 表示光标位置。',
+		'settings.customMappings.keyword': '关键词',
+		'settings.customMappings.keywordPlaceholder': 'div',
+		'settings.customMappings.snippet': 'LaTeX 片段',
+		'settings.customMappings.snippetPlaceholder': '\\frac{$1}{$2}',
+		'settings.customMappings.add': '添加',
+		'settings.customMappings.delete': '删除',
+		'settings.customMappings.emptyFields': '关键词和片段不能为空',
+
 	// Notices
 	'notice.generating': '正在生成 LaTeX...',
 	'notice.generated': '已生成',

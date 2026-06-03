@@ -133,7 +133,15 @@ function matchByPrefix(query, commands) {
 function matchByChinese(query, chineseMap, commandMap) {
   const results = [];
   const seen = /* @__PURE__ */ new Set();
-  const lookups = [query, ...query.split("")];
+  const lookups = [];
+  for (let len = query.length; len >= 1; len--) {
+    lookups.push(query.substring(0, len));
+  }
+  for (const ch of query) {
+    if (!lookups.includes(ch)) {
+      lookups.push(ch);
+    }
+  }
   for (const key of lookups) {
     const cmdNames = chineseMap[key];
     if (!cmdNames)
@@ -160,7 +168,15 @@ function matchByChinese(query, chineseMap, commandMap) {
 function matchRawSymbols(query, rawMap) {
   const results = [];
   const seen = /* @__PURE__ */ new Set();
-  const lookups = [query, ...query.split("")];
+  const lookups = [];
+  for (let len = query.length; len >= 1; len--) {
+    lookups.push(query.substring(0, len));
+  }
+  for (const ch of query) {
+    if (!lookups.includes(ch)) {
+      lookups.push(ch);
+    }
+  }
   for (const key of lookups) {
     const inserts = rawMap[key];
     if (!inserts)
@@ -182,26 +198,70 @@ function matchRawSymbols(query, rawMap) {
   }
   return results;
 }
-function matchSuggestions(query, commands, chineseMap, commandMap, rawMap) {
+function matchCustomMappings(query, customMappings, hasChinese) {
+  const results = [];
+  const lowerQuery = query.toLowerCase();
+  for (const mapping of customMappings) {
+    const keywordHasChinese = /[一-鿿]/.test(mapping.keyword);
+    if (hasChinese && keywordHasChinese) {
+      let matched = false;
+      for (let len = query.length; len >= 1; len--) {
+        if (query.substring(0, len) === mapping.keyword) {
+          matched = true;
+          break;
+        }
+      }
+      if (matched) {
+        results.push({
+          command: mapping.snippet,
+          displayText: mapping.snippet.replace(/\$\d+/g, "\xB7"),
+          description: "",
+          descriptionZh: mapping.keyword,
+          snippet: mapping.snippet,
+          source: "custom",
+          isCustom: true
+        });
+      }
+    } else if (!hasChinese && !keywordHasChinese) {
+      if (mapping.keyword.toLowerCase().startsWith(lowerQuery)) {
+        results.push({
+          command: mapping.keyword,
+          displayText: mapping.snippet.replace(/\$\d+/g, "\xB7"),
+          description: "",
+          descriptionZh: "",
+          snippet: mapping.snippet,
+          source: "custom",
+          isCustom: true
+        });
+      }
+    }
+  }
+  return results;
+}
+function matchSuggestions(query, commands, chineseMap, commandMap, rawMap, customMappings) {
   const hasChinese = /[一-鿿]/.test(query);
   let results;
   if (hasChinese) {
     const chineseResults = matchByChinese(query, chineseMap, commandMap);
     const rawResults = matchRawSymbols(query, rawMap);
-    results = [...rawResults, ...chineseResults];
+    const customResults = matchCustomMappings(query, customMappings, true);
+    results = [...rawResults, ...chineseResults, ...customResults];
   } else {
-    results = matchByPrefix(query, commands);
+    const prefixResults = matchByPrefix(query, commands);
+    const customResults = matchCustomMappings(query, customMappings, false);
+    results = [...prefixResults, ...customResults];
   }
   return results;
 }
 
 // src/suggest.ts
 var LatexSuggest = class extends import_obsidian.EditorSuggest {
-  constructor(app, commands, chineseMap, rawMap) {
+  constructor(app, commands, chineseMap, rawMap, getSettings) {
     super(app);
     this.commands = commands;
     this.chineseMap = chineseMap;
     this.rawMap = rawMap;
+    this.getSettings = getSettings;
     this.commandMap = /* @__PURE__ */ new Map();
     for (const cmd of commands) {
       this.commandMap.set(cmd.command, cmd);
@@ -238,17 +298,33 @@ var LatexSuggest = class extends import_obsidian.EditorSuggest {
     };
   }
   getSuggestions(context) {
+    var _a;
+    const settings = this.getSettings();
     const results = matchSuggestions(
       context.query,
       this.commands,
       this.chineseMap,
       this.commandMap,
-      this.rawMap
+      this.rawMap,
+      (_a = settings.customMappings) != null ? _a : []
     );
     return results;
   }
   renderSuggestion(suggestion, el) {
     const container = el.createDiv({ cls: "latex-suggest-item" });
+    if (suggestion.isCustom) {
+      container.createEl("code", {
+        cls: "latex-suggest-command",
+        text: suggestion.displayText
+      });
+      if (suggestion.descriptionZh) {
+        container.createSpan({
+          cls: "latex-suggest-desc",
+          text: suggestion.descriptionZh
+        });
+      }
+      return;
+    }
     container.createEl("code", {
       cls: "latex-suggest-command",
       text: "\\" + suggestion.displayText
@@ -271,6 +347,44 @@ var LatexSuggest = class extends import_obsidian.EditorSuggest {
         context.start,
         context.end
       );
+      return;
+    }
+    if (suggestion.isCustom) {
+      const replacement2 = suggestion.snippet;
+      if (!replacement2.includes("$1")) {
+        context.editor.replaceRange(
+          replacement2,
+          context.start,
+          context.end
+        );
+        return;
+      }
+      let firstTabstopOffset2 = Infinity;
+      let cleanOffset2 = 0;
+      let i2 = 0;
+      while (i2 < replacement2.length) {
+        const remaining = replacement2.substring(i2);
+        const m = remaining.match(/^\$(\d+)/);
+        if (m) {
+          if (parseInt(m[1]) === 1 && cleanOffset2 < firstTabstopOffset2) {
+            firstTabstopOffset2 = cleanOffset2;
+          }
+          i2 += m[0].length;
+        } else {
+          cleanOffset2++;
+          i2++;
+        }
+      }
+      const cleanReplacement2 = replacement2.replace(/\$\d+/g, "");
+      context.editor.replaceRange(
+        cleanReplacement2,
+        context.start,
+        context.end
+      );
+      context.editor.setCursor({
+        line: context.start.line,
+        ch: context.start.ch + firstTabstopOffset2
+      });
       return;
     }
     const replacement = "\\" + suggestion.snippet;
@@ -317,7 +431,8 @@ var DEFAULT_SETTINGS = {
   aiApiKey: "",
   aiModel: "gpt-4o-mini",
   aiSystemPrompt: "",
-  aiEnableThinking: false
+  aiEnableThinking: false,
+  customMappings: []
 };
 
 // src/ai.ts
@@ -398,6 +513,16 @@ var en = {
   "settings.test.desc": "Send a test request to verify API configuration",
   "settings.test.button": "Test",
   "settings.test.running": "Testing...",
+  // Custom mappings
+  "settings.customMappings.title": "Custom Keyword Mappings",
+  "settings.customMappings.desc": "Add custom keyword-to-LaTeX snippet mappings. For Latin keywords, type \\keyword in math mode; for Chinese keywords, type directly. Use $1, $2 for cursor positions.",
+  "settings.customMappings.keyword": "Keyword",
+  "settings.customMappings.keywordPlaceholder": "div",
+  "settings.customMappings.snippet": "LaTeX Snippet",
+  "settings.customMappings.snippetPlaceholder": "\\frac{$1}{$2}",
+  "settings.customMappings.add": "Add",
+  "settings.customMappings.delete": "Delete",
+  "settings.customMappings.emptyFields": "Keyword and snippet cannot be empty",
   // Notices
   "notice.generating": "Generating LaTeX...",
   "notice.generated": "Generated",
@@ -436,6 +561,16 @@ var zhCn = {
   "settings.test.desc": "\u53D1\u9001\u6D4B\u8BD5\u8BF7\u6C42\u9A8C\u8BC1 API \u914D\u7F6E\u662F\u5426\u6B63\u786E",
   "settings.test.button": "\u6D4B\u8BD5",
   "settings.test.running": "\u6D4B\u8BD5\u4E2D...",
+  // Custom mappings
+  "settings.customMappings.title": "\u81EA\u5B9A\u4E49\u5173\u952E\u8BCD\u6620\u5C04",
+  "settings.customMappings.desc": "\u6DFB\u52A0\u81EA\u5B9A\u4E49\u5173\u952E\u8BCD\u5230 LaTeX \u7247\u6BB5\u7684\u6620\u5C04\u3002\u62C9\u4E01\u5173\u952E\u8BCD\u5728\u6570\u5B66\u6A21\u5F0F\u4E0B\u8F93\u5165 \\keyword \u89E6\u53D1\uFF1B\u4E2D\u6587\u5173\u952E\u8BCD\u76F4\u63A5\u8F93\u5165\u89E6\u53D1\u3002\u7528 $1, $2 \u8868\u793A\u5149\u6807\u4F4D\u7F6E\u3002",
+  "settings.customMappings.keyword": "\u5173\u952E\u8BCD",
+  "settings.customMappings.keywordPlaceholder": "div",
+  "settings.customMappings.snippet": "LaTeX \u7247\u6BB5",
+  "settings.customMappings.snippetPlaceholder": "\\frac{$1}{$2}",
+  "settings.customMappings.add": "\u6DFB\u52A0",
+  "settings.customMappings.delete": "\u5220\u9664",
+  "settings.customMappings.emptyFields": "\u5173\u952E\u8BCD\u548C\u7247\u6BB5\u4E0D\u80FD\u4E3A\u7A7A",
   // Notices
   "notice.generating": "\u6B63\u5728\u751F\u6210 LaTeX...",
   "notice.generated": "\u5DF2\u751F\u6210",
@@ -531,6 +666,44 @@ var LatexAutocompleteSettingTab = class extends import_obsidian3.PluginSettingTa
         btn.setDisabled(false);
       })
     );
+    containerEl.createEl("h2", { text: t("settings.customMappings.title") });
+    containerEl.createEl("p", {
+      text: t("settings.customMappings.desc"),
+      cls: "setting-item-description"
+    });
+    let newKeyword = "";
+    let newSnippet = "";
+    new import_obsidian3.Setting(containerEl).setName(t("settings.customMappings.keyword")).addText(
+      (text) => text.setPlaceholder(t("settings.customMappings.keywordPlaceholder")).onChange((value) => {
+        newKeyword = value;
+      })
+    ).addText(
+      (text) => text.setPlaceholder(t("settings.customMappings.snippetPlaceholder")).onChange((value) => {
+        newSnippet = value;
+      })
+    ).addButton(
+      (btn) => btn.setButtonText(t("settings.customMappings.add")).onClick(async () => {
+        const keyword = newKeyword.trim();
+        const snippet = newSnippet.trim();
+        if (!keyword || !snippet) {
+          new import_obsidian3.Notice(t("settings.customMappings.emptyFields"));
+          return;
+        }
+        this.settings.customMappings.push({ keyword, snippet });
+        await this.onSave();
+        this.display();
+      })
+    );
+    for (let i = 0; i < this.settings.customMappings.length; i++) {
+      const mapping = this.settings.customMappings[i];
+      new import_obsidian3.Setting(containerEl).setName(mapping.keyword).setDesc(mapping.snippet).addButton(
+        (btn) => btn.setButtonText(t("settings.customMappings.delete")).setIcon("trash").onClick(async () => {
+          this.settings.customMappings.splice(i, 1);
+          await this.onSave();
+          this.display();
+        })
+      );
+    }
   }
 };
 
@@ -2452,7 +2625,7 @@ var LatexAutocompletePlugin = class extends import_obsidian4.Plugin {
     const chineseMap = chinese_keywords_default;
     const rawMap = raw_symbols_default;
     this.registerEditorSuggest(
-      new LatexSuggest(this.app, commands, chineseMap, rawMap)
+      new LatexSuggest(this.app, commands, chineseMap, rawMap, () => this.settings)
     );
     const tabHandler = (evt) => {
       if (evt.key === "Tab" && !evt.ctrlKey && !evt.altKey && !evt.metaKey) {

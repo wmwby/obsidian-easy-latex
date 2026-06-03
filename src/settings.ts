@@ -1,5 +1,5 @@
 import { App, Notice, Plugin, PluginSettingTab, Setting } from "obsidian";
-import { LatexAutocompleteSettings } from "./types";
+import { LatexAutocompleteSettings, CustomMapping } from "./types";
 import { callAiApi } from "./ai";
 import { t } from './i18n';
 
@@ -100,5 +100,62 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 					btn.setDisabled(false);
 				})
 			);
+
+		// --- Custom Keyword Mappings ---
+		containerEl.createEl("h2", { text: t('settings.customMappings.title') });
+		containerEl.createEl("p", {
+			text: t('settings.customMappings.desc'),
+			cls: "setting-item-description",
+		});
+
+		// Add new mapping
+		let newKeyword = "";
+		let newSnippet = "";
+
+		new Setting(containerEl)
+			.setName(t('settings.customMappings.keyword'))
+			.addText((text) =>
+				text
+					.setPlaceholder(t('settings.customMappings.keywordPlaceholder'))
+					.onChange((value) => { newKeyword = value; })
+			)
+			.addText((text) =>
+				text
+					.setPlaceholder(t('settings.customMappings.snippetPlaceholder'))
+					.onChange((value) => { newSnippet = value; })
+			)
+			.addButton((btn) =>
+				btn
+					.setButtonText(t('settings.customMappings.add'))
+					.onClick(async () => {
+						const keyword = newKeyword.trim();
+						const snippet = newSnippet.trim();
+						if (!keyword || !snippet) {
+							new Notice(t('settings.customMappings.emptyFields'));
+							return;
+						}
+						this.settings.customMappings.push({ keyword, snippet });
+						await this.onSave();
+						this.display();
+					})
+			);
+
+		// List existing mappings
+		for (let i = 0; i < this.settings.customMappings.length; i++) {
+			const mapping = this.settings.customMappings[i];
+			new Setting(containerEl)
+				.setName(mapping.keyword)
+				.setDesc(mapping.snippet)
+				.addButton((btn) =>
+					btn
+						.setButtonText(t('settings.customMappings.delete'))
+						.setIcon("trash")
+						.onClick(async () => {
+							this.settings.customMappings.splice(i, 1);
+							await this.onSave();
+							this.display();
+						})
+				);
+		}
 	}
 }

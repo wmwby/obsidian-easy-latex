@@ -20,6 +20,17 @@ const en: Record<string, string> = {
 	'settings.test.button': 'Test',
 	'settings.test.running': 'Testing...',
 
+		// Custom mappings
+		'settings.customMappings.title': 'Custom Keyword Mappings',
+		'settings.customMappings.desc': 'Add custom keyword-to-LaTeX snippet mappings. For Latin keywords, type \\keyword in math mode; for Chinese keywords, type directly. Use $1, $2 for cursor positions.',
+		'settings.customMappings.keyword': 'Keyword',
+		'settings.customMappings.keywordPlaceholder': 'div',
+		'settings.customMappings.snippet': 'LaTeX Snippet',
+		'settings.customMappings.snippetPlaceholder': '\\frac{$1}{$2}',
+		'settings.customMappings.add': 'Add',
+		'settings.customMappings.delete': 'Delete',
+		'settings.customMappings.emptyFields': 'Keyword and snippet cannot be empty',
+
 	// Notices
 	'notice.generating': 'Generating LaTeX...',
 	'notice.generated': 'Generated',

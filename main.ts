@@ -27,7 +27,7 @@ export default class LatexAutocompletePlugin extends Plugin {
 		const rawMap: Record<string, string[]> = rawSymbols;
 
 		this.registerEditorSuggest(
-			new LatexSuggest(this.app, commands, chineseMap, rawMap)
+			new LatexSuggest(this.app, commands, chineseMap, rawMap, () => this.settings)
 		);
 
 		// Use DOM capture-phase listener because CM6 keymap doesn't

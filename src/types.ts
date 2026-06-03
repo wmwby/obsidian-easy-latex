@@ -12,8 +12,14 @@ export interface LatexSuggestion {
 	description: string;
 	descriptionZh: string;
 	snippet: string;
-	source: "prefix" | "chinese" | "both" | "raw";
+	source: "prefix" | "chinese" | "both" | "raw" | "custom";
 	isRaw?: boolean;
+	isCustom?: boolean;
+}
+
+export interface CustomMapping {
+	keyword: string;
+	snippet: string;
 }
 
 export interface LatexAutocompleteSettings {
@@ -22,6 +28,7 @@ export interface LatexAutocompleteSettings {
 	aiModel: string;
 	aiSystemPrompt: string;
 	aiEnableThinking: boolean;
+	customMappings: CustomMapping[];
 }
 
 export const DEFAULT_SETTINGS: LatexAutocompleteSettings = {
@@ -30,4 +37,5 @@ export const DEFAULT_SETTINGS: LatexAutocompleteSettings = {
 	aiModel: "gpt-4o-mini",
 	aiSystemPrompt: "",
 	aiEnableThinking: false,
+	customMappings: [],
 };
