@@ -25,8 +25,16 @@ export function matchByChinese(
 	const results: LatexSuggestion[] = [];
 	const seen = new Set<string>();
 
-	// Try full query first, then individual characters
-	const lookups = [query, ...query.split("")];
+	// Try all prefixes from longest to shortest, then individual characters
+	const lookups: string[] = [];
+	for (let len = query.length; len >= 1; len--) {
+		lookups.push(query.substring(0, len));
+	}
+	for (const ch of query) {
+		if (!lookups.includes(ch)) {
+			lookups.push(ch);
+		}
+	}
 	for (const key of lookups) {
 		const cmdNames = chineseMap[key];
 		if (!cmdNames) continue;
@@ -56,7 +64,15 @@ export function matchRawSymbols(
 	const results: LatexSuggestion[] = [];
 	const seen = new Set<string>();
 
-	const lookups = [query, ...query.split("")];
+	const lookups: string[] = [];
+	for (let len = query.length; len >= 1; len--) {
+		lookups.push(query.substring(0, len));
+	}
+	for (const ch of query) {
+		if (!lookups.includes(ch)) {
+			lookups.push(ch);
+		}
+	}
 	for (const key of lookups) {
 		const inserts = rawMap[key];
 		if (!inserts) continue;
