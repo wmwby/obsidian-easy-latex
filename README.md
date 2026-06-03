@@ -1,3 +1,5 @@
+[English](README.md) | [中文](README_zh-CN.md)
+
 # Obsidian Easy LaTeX
 
 An Obsidian plugin that provides intelligent LaTeX auto-completion in math contexts, with Chinese/English keyword support and AI-powered formula generation.
@@ -19,6 +21,13 @@ Define your own keyword-to-LaTeX mappings in Settings → Easy LaTeX → Custom 
 - **Latin keywords**: type `\keyword` in math mode to trigger. E.g., map `div` → `\frac{$1}{$2}`, then typing `\div` suggests `\frac{}{}` with cursor positioned inside the first `{}`.
 - **Chinese keywords**: type the keyword directly. E.g., map `分数` → `\frac{$1}{$2}`, then typing `分数` replaces it with `\frac{}{}`.
 - Snippets support `$1`, `$2` tabstop placeholders for cursor positioning.
+
+**Example:** Map `div` → `\frac{$1}{$2}`. Now typing `\div` in a math zone shows your custom `\frac{}{}` suggestion alongside the built-in `\div` (÷).
+
+| Field | Description | Example |
+|-------|-------------|---------|
+| Keyword | The trigger text | `div`, `分数`, `bracket` |
+| LaTeX Snippet | The LaTeX to insert (include `\` prefix) | `\frac{$1}{$2}`, `\left($1\right)` |
 
 ### AI Formula Generation
 
@@ -51,19 +60,6 @@ Go to Settings → Easy LaTeX to configure:
 | System Prompt | System prompt sent to the AI | Built-in LaTeX converter prompt |
 
 The AI feature is optional — the completion list works without any API configuration.
-
-## Custom Keyword Mappings
-
-In addition to the built-in 120+ Chinese keywords, you can add your own shortcuts in Settings → Easy LaTeX → Custom Keyword Mappings.
-
-**Example:** Map `div` → `\frac{$1}{$2}`. Now typing `\div` in a math zone shows your custom `\frac{}{}` suggestion alongside the built-in `\div` (÷).
-
-| Field | Description | Example |
-|-------|-------------|---------|
-| Keyword | The trigger text | `div`, `分数`, `bracket` |
-| LaTeX Snippet | The LaTeX to insert (include `\` prefix) | `\frac{$1}{$2}`, `\left($1\right)` |
-
-Use `$1`, `$2` etc. to mark cursor tabstops.
 
 ## License
 
