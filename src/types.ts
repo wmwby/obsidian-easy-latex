@@ -2,6 +2,7 @@ export interface LatexCommand {
 	command: string;
 	description: string;
 	descriptionZh: string;
+	descriptions?: Record<string, string>;
 	snippet: string;
 	category: string;
 }
@@ -10,9 +11,9 @@ export interface LatexSuggestion {
 	command: string;
 	displayText: string;
 	description: string;
-	descriptionZh: string;
+	localDescription: string;
 	snippet: string;
-	source: "prefix" | "chinese" | "both" | "raw" | "custom";
+	source: "prefix" | "keyword" | "both" | "raw" | "custom";
 	isRaw?: boolean;
 	isCustom?: boolean;
 }

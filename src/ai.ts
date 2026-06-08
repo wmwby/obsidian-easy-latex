@@ -1,3 +1,4 @@
+import { t } from './i18n';
 import { Editor, EditorPosition, requestUrl } from "obsidian";
 import { findMathZoneStart } from "./mathContext";
 import { LatexAutocompleteSettings } from "./types";
@@ -66,7 +67,7 @@ export async function callAiApi(
 	});
 
 	const content = response.json.choices?.[0]?.message?.content;
-	if (!content) throw new Error("AI 返回内容为空");
+	if (!content) throw new Error(t('ai.emptyResponse'));
 
 	// Strip markdown code block wrapping if present
 	return content

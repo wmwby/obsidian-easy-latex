@@ -1,12 +1,11 @@
 import { Notice, Plugin } from "obsidian";
 import { LatexSuggest } from "./src/suggest";
-import { DEFAULT_SETTINGS, LatexAutocompleteSettings, LatexCommand } from "./src/types";
+import { DEFAULT_SETTINGS, LatexAutocompleteSettings } from "./src/types";
 import { callAiApi, extractPromptText } from "./src/ai";
 import { isInMathContext } from "./src/mathContext";
 import { LatexAutocompleteSettingTab } from "./src/settings";
-import chineseKeywords from "./data/chinese-keywords.json";
+import { LANG_REGISTRY } from "./src/langRegistry";
 import latexCommands from "./data/latex-commands.json";
-import rawSymbols from "./data/raw-symbols.json";
 import { t } from "./src/i18n";
 
 const LEGACY_DEFAULT_PROMPT = `你是 LaTeX 数学公式转换器。将用户的数学描述转换为 LaTeX 代码。
@@ -22,12 +21,10 @@ export default class LatexAutocompletePlugin extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		const commands: LatexCommand[] = latexCommands as LatexCommand[];
-		const chineseMap: Record<string, string[]> = chineseKeywords;
-		const rawMap: Record<string, string[]> = rawSymbols;
+		const commands = latexCommands as any[];
 
 		this.registerEditorSuggest(
-			new LatexSuggest(this.app, commands, chineseMap, rawMap, () => this.settings)
+			new LatexSuggest(this.app, commands, LANG_REGISTRY, () => this.settings)
 		);
 
 		// Use DOM capture-phase listener because CM6 keymap doesn't

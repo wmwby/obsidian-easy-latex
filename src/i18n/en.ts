@@ -38,6 +38,9 @@ const en: Record<string, string> = {
 	'notice.fail': 'Connection failed: ',
 	'notice.aiFail': 'AI generation failed: ',
 
+	// AI errors
+		'ai.emptyResponse': 'AI returned empty content',
+
 	// Default AI system prompt
 	'defaultPrompt': `You are a LaTeX math formula converter. Convert the user's math description into LaTeX code.
 Rules:

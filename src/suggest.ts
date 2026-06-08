@@ -10,31 +10,36 @@ import {
 import { isInMathContext } from "./mathContext";
 import { matchSuggestions } from "./matcher";
 import { LatexCommand, LatexSuggestion, LatexAutocompleteSettings } from "./types";
+import { LangConfig, buildCombinedScriptClass } from "./langRegistry";
 
 export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 	private commands: LatexCommand[];
-	private chineseMap: Record<string, string[]>;
-	private rawMap: Record<string, string[]>;
 	private commandMap: Map<string, LatexCommand>;
+	private langRegistry: LangConfig[];
 	private getSettings: () => LatexAutocompleteSettings;
+	private triggerRegex: RegExp;
+	private rawTriggerRegex: RegExp;
 
 	constructor(
 		app: App,
 		commands: LatexCommand[],
-		chineseMap: Record<string, string[]>,
-		rawMap: Record<string, string[]>,
+		langRegistry: LangConfig[],
 		getSettings: () => LatexAutocompleteSettings
 	) {
 		super(app);
 		this.commands = commands;
-		this.chineseMap = chineseMap;
-		this.rawMap = rawMap;
+		this.langRegistry = langRegistry;
 		this.getSettings = getSettings;
 		this.commandMap = new Map();
 		for (const cmd of commands) {
 			this.commandMap.set(cmd.command, cmd);
 		}
 		this.limit = 25;
+
+		// Build combined regex for all registered scripts
+		const scriptClass = buildCombinedScriptClass();
+		this.triggerRegex = new RegExp(`^[a-zA-Z${scriptClass}]+$`);
+		this.rawTriggerRegex = new RegExp(`[${scriptClass}]+$`);
 	}
 
 	onTrigger(
@@ -54,8 +59,8 @@ export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 			if (!(lastBackslash > 0 && textBeforeCursor[lastBackslash - 1] === "\\")) {
 				const queryText = textBeforeCursor.substring(lastBackslash + 1);
 
-				// Accept only letters or CJK characters, at least 1 char
-				if (queryText.length > 0 && /^[a-zA-Z一-鿿]+$/.test(queryText)) {
+				// Accept Latin letters or any registered script characters
+				if (queryText.length > 0 && this.triggerRegex.test(queryText)) {
 					return {
 						start: { line: cursor.line, ch: lastBackslash },
 						end: { line: cursor.line, ch: cursor.ch },
@@ -65,15 +70,15 @@ export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 			}
 		}
 
-		// --- Branch 2: raw CJK trigger (no backslash) ---
-		const cjkMatch = textBeforeCursor.match(/[一-鿿]+$/);
-		if (!cjkMatch) return null;
+		// --- Branch 2: raw script trigger (no backslash) ---
+		const scriptMatch = textBeforeCursor.match(this.rawTriggerRegex);
+		if (!scriptMatch) return null;
 
-		const queryText = cjkMatch[0];
-		const cjkStart = textBeforeCursor.length - queryText.length;
+		const queryText = scriptMatch[0];
+		const scriptStart = textBeforeCursor.length - queryText.length;
 
 		return {
-			start: { line: cursor.line, ch: cjkStart },
+			start: { line: cursor.line, ch: scriptStart },
 			end: { line: cursor.line, ch: cursor.ch },
 			query: queryText,
 		};
@@ -81,13 +86,14 @@ export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 
 	getSuggestions(context: EditorSuggestContext): LatexSuggestion[] {
 		const settings = this.getSettings();
+		const locale = (window as any).moment?.locale?.() ?? "en";
 		const results = matchSuggestions(
 			context.query,
 			this.commands,
-			this.chineseMap,
 			this.commandMap,
-			this.rawMap,
-			settings.customMappings ?? []
+			this.langRegistry,
+			settings.customMappings ?? [],
+			locale
 		);
 		return results;
 	}
@@ -100,10 +106,10 @@ export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 				cls: "latex-suggest-command",
 				text: suggestion.displayText,
 			});
-			if (suggestion.descriptionZh) {
+			if (suggestion.localDescription) {
 				container.createSpan({
 					cls: "latex-suggest-desc",
-					text: suggestion.descriptionZh,
+					text: suggestion.localDescription,
 				});
 			}
 			return;
@@ -114,8 +120,8 @@ export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 			text: "\\" + suggestion.displayText,
 		});
 
-		const desc = suggestion.descriptionZh
-			? suggestion.descriptionZh +
+		const desc = suggestion.localDescription
+			? suggestion.localDescription +
 				(suggestion.description
 					? " (" + suggestion.description + ")"
 					: "")
@@ -133,7 +139,7 @@ export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 		const context = this.context;
 		if (!context) return;
 
-		// Raw symbol: replace CJK text directly, no backslash prefix
+		// Raw symbol: replace text directly, no backslash prefix
 		if (suggestion.isRaw) {
 			context.editor.replaceRange(
 				suggestion.snippet,

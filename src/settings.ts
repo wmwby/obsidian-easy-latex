@@ -33,7 +33,7 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName("API Key")
+			.setName(t('settings.apiKey.name'))
 			.setDesc(t('settings.apiKey.desc'))
 			.addText((text) => {
 				text.setPlaceholder(t('settings.apiKey.placeholder'))
@@ -46,7 +46,7 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 			});
 
 		new Setting(containerEl)
-			.setName("Model")
+			.setName(t('settings.model.name'))
 			.setDesc(t('settings.model.desc'))
 			.addText((text) =>
 				text
@@ -59,7 +59,7 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName("System Prompt")
+			.setName(t('settings.systemPrompt.name'))
 			.setDesc(t('settings.systemPrompt.desc'))
 			.addTextArea((text) =>
 				text

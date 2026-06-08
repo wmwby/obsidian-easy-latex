@@ -38,6 +38,9 @@ const zhCn: Record<string, string> = {
 	'notice.fail': '连接失败: ',
 	'notice.aiFail': 'AI 生成失败: ',
 
+	// AI errors
+		'ai.emptyResponse': 'AI 返回内容为空',
+
 	// Default AI system prompt
 	'defaultPrompt': `你是 LaTeX 数学公式转换器。将用户的数学描述转换为 LaTeX 代码。
 规则：

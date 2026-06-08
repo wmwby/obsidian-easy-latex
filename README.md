@@ -2,7 +2,7 @@
 
 # Obsidian Easy LaTeX
 
-An Obsidian plugin that provides intelligent LaTeX auto-completion in math contexts, with Chinese/English keyword support and AI-powered formula generation.
+An Obsidian plugin that provides intelligent LaTeX auto-completion in math contexts, with multilingual keyword support (Chinese, Japanese, Korean, English) and AI-powered formula generation.
 
 ## Features
 
@@ -10,23 +10,28 @@ An Obsidian plugin that provides intelligent LaTeX auto-completion in math conte
 
 Type `\` inside math contexts (`$...$`, `$$...$$`, or LaTeX code blocks) to get a searchable suggestion list of 200+ LaTeX commands. Filter by prefix or description.
 
-### Chinese Keyword Completion
+### Multilingual Keyword Completion
 
-Type Chinese math terms (e.g., `积分`, `矩阵`, `极限`) directly in math contexts — no backslash needed. The plugin matches them to relevant LaTeX commands. It also supports prefix matching, so typing `约等于` will match the keyword `约等` → `\approx`.
+Type math terms in your language directly in math contexts — no backslash needed. The plugin matches them to relevant LaTeX commands.
+
+- **Chinese**: `积分` → `\int`, `矩阵` → `\begin`, `约等于` → `\approx` (prefix matching supported)
+- **Japanese**: `せきぶん` → `\int`, `ぎょうれつ` → `\begin`, `ぶんすう` → `\frac`
+- **Korean**: `적분` → `\int`, `행렬` → `\begin`, `분수` → `\frac`
+- **English**: type `\keyword` in math mode (e.g., `\frac` → `\frac{}{}`)
 
 ### Custom Keyword Mappings
 
 Define your own keyword-to-LaTeX mappings in Settings → Easy LaTeX → Custom Keyword Mappings.
 
 - **Latin keywords**: type `\keyword` in math mode to trigger. E.g., map `div` → `\frac{$1}{$2}`, then typing `\div` suggests `\frac{}{}` with cursor positioned inside the first `{}`.
-- **Chinese keywords**: type the keyword directly. E.g., map `分数` → `\frac{$1}{$2}`, then typing `分数` replaces it with `\frac{}{}`.
+- **CJK keywords** (Chinese/Japanese/Korean): type the keyword directly. E.g., map `分数` → `\frac{$1}{$2}`, then typing `分数` replaces it with `\frac{}{}`.
 - Snippets support `$1`, `$2` tabstop placeholders for cursor positioning.
 
 **Example:** Map `div` → `\frac{$1}{$2}`. Now typing `\div` in a math zone shows your custom `\frac{}{}` suggestion alongside the built-in `\div` (÷).
 
 | Field | Description | Example |
 |-------|-------------|---------|
-| Keyword | The trigger text | `div`, `分数`, `bracket` |
+| Keyword | The trigger text | `div`, `分数`, `ぶんすう`, `분수`, `bracket` |
 | LaTeX Snippet | The LaTeX to insert (include `\` prefix) | `\frac{$1}{$2}`, `\left($1\right)` |
 
 ### AI Formula Generation
