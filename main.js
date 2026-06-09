@@ -1172,13 +1172,13 @@ var LatexAutocompleteSettingTab = class extends import_obsidian3.PluginSettingTa
     );
     for (let i = 0; i < this.settings.customMappings.length; i++) {
       const mapping = this.settings.customMappings[i];
-      new import_obsidian3.Setting(containerEl).setName(mapping.keyword).setDesc(mapping.snippet).addExtraButton((btn) => {
-        btn.setIcon("trash").setTooltip(t("settings.customMappings.delete")).onClick(async () => {
+      new import_obsidian3.Setting(containerEl).setName(mapping.keyword).setDesc(mapping.snippet).addButton(
+        (btn) => btn.setButtonText("\xD7").onClick(async () => {
           this.settings.customMappings.splice(i, 1);
           await this.onSave();
           this.display();
-        });
-      });
+        })
+      );
     }
   }
 };

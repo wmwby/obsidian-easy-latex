@@ -1,4 +1,4 @@
-import { App, Notice, Plugin, PluginSettingTab, Setting, setIcon } from "obsidian";
+import { App, Notice, Plugin, PluginSettingTab, Setting } from "obsidian";
 import { LatexAutocompleteSettings } from "./types";
 import { callAiApi } from "./ai";
 import { t } from './i18n';
@@ -146,15 +146,14 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 			new Setting(containerEl)
 				.setName(mapping.keyword)
 				.setDesc(mapping.snippet)
-				.addExtraButton((btn) => {
-					btn.setIcon("trash")
-						.setTooltip(t('settings.customMappings.delete'))
+				.addButton((btn) =>
+					btn.setButtonText("×")
 						.onClick(async () => {
 							this.settings.customMappings.splice(i, 1);
 							await this.onSave();
 							this.display();
-						});
-				});
+						})
+				);
 		}
 	}
 }
