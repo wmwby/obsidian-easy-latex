@@ -1,4 +1,4 @@
-import { App, Notice, Plugin, PluginSettingTab, Setting } from "obsidian";
+import { App, Notice, Plugin, PluginSettingTab, Setting, setIcon } from "obsidian";
 import { LatexAutocompleteSettings } from "./types";
 import { callAiApi } from "./ai";
 import { t } from './i18n';
@@ -89,15 +89,15 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 			.addButton((btn) =>
 				btn.setButtonText(t('settings.test.button')).onClick(async () => {
 					btn.setButtonText(t('settings.test.running'));
-					btn.setDisabled(true);
+					btn.buttonEl.disabled = true;
 					try {
 						const result = await callAiApi("1+1等于几", this.settings);
 						new Notice(t('notice.success') + result, 4000);
-					} catch (err: any) {
+					} catch (err: unknown) {
 						new Notice(t('notice.fail') + String(err), 5000);
 					}
 					btn.setButtonText(t('settings.test.button'));
-					btn.setDisabled(false);
+					btn.buttonEl.disabled = false;
 				})
 			);
 
@@ -146,16 +146,15 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 			new Setting(containerEl)
 				.setName(mapping.keyword)
 				.setDesc(mapping.snippet)
-				.addButton((btn) =>
-					btn
-						.setButtonText(t('settings.customMappings.delete'))
-						.setIcon("trash")
+				.addExtraButton((btn) => {
+					btn.setIcon("trash")
+						.setTooltip(t('settings.customMappings.delete'))
 						.onClick(async () => {
 							this.settings.customMappings.splice(i, 1);
 							await this.onSave();
 							this.display();
-						})
-				);
+						});
+				});
 		}
 	}
 }

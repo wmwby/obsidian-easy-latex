@@ -1131,7 +1131,7 @@ var LatexAutocompleteSettingTab = class extends import_obsidian3.PluginSettingTa
     new import_obsidian3.Setting(containerEl).setName(t("settings.test.name")).setDesc(t("settings.test.desc")).addButton(
       (btn) => btn.setButtonText(t("settings.test.button")).onClick(async () => {
         btn.setButtonText(t("settings.test.running"));
-        btn.setDisabled(true);
+        btn.buttonEl.disabled = true;
         try {
           const result = await callAiApi("1+1\u7B49\u4E8E\u51E0", this.settings);
           new import_obsidian3.Notice(t("notice.success") + result, 4e3);
@@ -1139,7 +1139,7 @@ var LatexAutocompleteSettingTab = class extends import_obsidian3.PluginSettingTa
           new import_obsidian3.Notice(t("notice.fail") + String(err), 5e3);
         }
         btn.setButtonText(t("settings.test.button"));
-        btn.setDisabled(false);
+        btn.buttonEl.disabled = false;
       })
     );
     new import_obsidian3.Setting(containerEl).setName(t("settings.customMappings.title")).setHeading();
@@ -1172,13 +1172,13 @@ var LatexAutocompleteSettingTab = class extends import_obsidian3.PluginSettingTa
     );
     for (let i = 0; i < this.settings.customMappings.length; i++) {
       const mapping = this.settings.customMappings[i];
-      new import_obsidian3.Setting(containerEl).setName(mapping.keyword).setDesc(mapping.snippet).addButton(
-        (btn) => btn.setButtonText(t("settings.customMappings.delete")).setIcon("trash").onClick(async () => {
+      new import_obsidian3.Setting(containerEl).setName(mapping.keyword).setDesc(mapping.snippet).addExtraButton((btn) => {
+        btn.setIcon("trash").setTooltip(t("settings.customMappings.delete")).onClick(async () => {
           this.settings.customMappings.splice(i, 1);
           await this.onSave();
           this.display();
-        })
-      );
+        });
+      });
     }
   }
 };
