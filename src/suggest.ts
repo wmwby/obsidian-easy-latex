@@ -86,7 +86,7 @@ export class LatexSuggest extends EditorSuggest<LatexSuggestion> {
 
 	getSuggestions(context: EditorSuggestContext): LatexSuggestion[] {
 		const settings = this.getSettings();
-		const locale = (window as any).moment?.locale?.() ?? "en";
+		const locale = (window as { moment?: { locale?: () => string } }).moment?.locale?.() ?? "en";
 		const results = matchSuggestions(
 			context.query,
 			this.commands,

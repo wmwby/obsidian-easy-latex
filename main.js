@@ -1078,7 +1078,8 @@ async function callAiApi(text, settings) {
     },
     body: JSON.stringify(body)
   });
-  const content = (_c = (_b = (_a = response.json.choices) == null ? void 0 : _a[0]) == null ? void 0 : _b.message) == null ? void 0 : _c.content;
+  const data = response.json;
+  const content = (_c = (_b = (_a = data.choices) == null ? void 0 : _a[0]) == null ? void 0 : _b.message) == null ? void 0 : _c.content;
   if (!content)
     throw new Error(t("ai.emptyResponse"));
   return content.replace(/^```(?:latex|tex|math)?\s*\n?/i, "").replace(/\n?```\s*$/i, "").trim();
@@ -1095,7 +1096,7 @@ var LatexAutocompleteSettingTab = class extends import_obsidian3.PluginSettingTa
   display() {
     const { containerEl } = this;
     containerEl.empty();
-    containerEl.createEl("h2", { text: t("settings.title") });
+    new import_obsidian3.Setting(containerEl).setName(t("settings.title")).setHeading();
     new import_obsidian3.Setting(containerEl).setName(t("settings.apiUrl.name")).setDesc(t("settings.apiUrl.desc")).addText(
       (text) => text.setPlaceholder(t("settings.apiUrl.placeholder")).setValue(this.settings.aiApiUrl).onChange(async (value) => {
         this.settings.aiApiUrl = value;
@@ -1141,7 +1142,7 @@ var LatexAutocompleteSettingTab = class extends import_obsidian3.PluginSettingTa
         btn.setDisabled(false);
       })
     );
-    containerEl.createEl("h2", { text: t("settings.customMappings.title") });
+    new import_obsidian3.Setting(containerEl).setName(t("settings.customMappings.title")).setHeading();
     containerEl.createEl("p", {
       text: t("settings.customMappings.desc"),
       cls: "setting-item-description"
@@ -2976,8 +2977,9 @@ var LatexAutocompletePlugin = class extends import_obsidian4.Plugin {
         }
       }
     };
-    document.addEventListener("keydown", tabHandler, true);
-    this.register(() => document.removeEventListener("keydown", tabHandler, true));
+    const doc = window.activeDocument;
+    doc.addEventListener("keydown", tabHandler, true);
+    this.register(() => doc.removeEventListener("keydown", tabHandler, true));
     this.addSettingTab(
       new LatexAutocompleteSettingTab(
         this.app,

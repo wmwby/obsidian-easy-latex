@@ -1,6 +1,6 @@
 import { Notice, Plugin } from "obsidian";
 import { LatexSuggest } from "./src/suggest";
-import { DEFAULT_SETTINGS, LatexAutocompleteSettings } from "./src/types";
+import { DEFAULT_SETTINGS, LatexAutocompleteSettings, LatexCommand } from "./src/types";
 import { callAiApi, extractPromptText } from "./src/ai";
 import { isInMathContext } from "./src/mathContext";
 import { LatexAutocompleteSettingTab } from "./src/settings";
@@ -21,7 +21,7 @@ export default class LatexAutocompletePlugin extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		const commands = latexCommands as any[];
+		const commands = latexCommands as LatexCommand[];
 
 		this.registerEditorSuggest(
 			new LatexSuggest(this.app, commands, LANG_REGISTRY, () => this.settings)
@@ -37,8 +37,9 @@ export default class LatexAutocompletePlugin extends Plugin {
 				}
 			}
 		};
-		document.addEventListener("keydown", tabHandler, true);
-		this.register(() => document.removeEventListener("keydown", tabHandler, true));
+		const doc = window.activeDocument;
+		doc.addEventListener("keydown", tabHandler, true);
+		this.register(() => doc.removeEventListener("keydown", tabHandler, true));
 
 		this.addSettingTab(
 			new LatexAutocompleteSettingTab(this.app, this, this.settings, () =>
@@ -50,7 +51,7 @@ export default class LatexAutocompletePlugin extends Plugin {
 	onunload() {}
 
 	async loadSettings() {
-		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData() as Partial<LatexAutocompleteSettings>);
 		if (!this.settings.aiSystemPrompt || this.settings.aiSystemPrompt === LEGACY_DEFAULT_PROMPT) {
 			this.settings.aiSystemPrompt = t('defaultPrompt');
 		}

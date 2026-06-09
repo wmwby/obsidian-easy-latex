@@ -11,7 +11,7 @@ const translations: Record<string, Record<string, string>> = {
 };
 
 function getLocale(): string {
-	return (window as any).moment?.locale?.() ?? 'en';
+	return (window as { moment?: { locale?: () => string } }).moment?.locale?.() ?? 'en';
 }
 
 function getTranslations(): Record<string, string> {

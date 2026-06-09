@@ -1,13 +1,13 @@
 import { App, Notice, Plugin, PluginSettingTab, Setting } from "obsidian";
-import { LatexAutocompleteSettings, CustomMapping } from "./types";
+import { LatexAutocompleteSettings } from "./types";
 import { callAiApi } from "./ai";
 import { t } from './i18n';
 
 export class LatexAutocompleteSettingTab extends PluginSettingTab {
 	private settings: LatexAutocompleteSettings;
-	private onSave: () => void;
+	private onSave: () => void | Promise<void>;
 
-	constructor(app: App, plugin: Plugin, settings: LatexAutocompleteSettings, onSave: () => void) {
+	constructor(app: App, plugin: Plugin, settings: LatexAutocompleteSettings, onSave: () => void | Promise<void>) {
 		super(app, plugin);
 		this.settings = settings;
 		this.onSave = onSave;
@@ -17,7 +17,7 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 		const { containerEl } = this;
 		containerEl.empty();
 
-		containerEl.createEl("h2", { text: t('settings.title') });
+		new Setting(containerEl).setName(t('settings.title')).setHeading();
 
 		new Setting(containerEl)
 			.setName(t('settings.apiUrl.name'))
@@ -102,7 +102,7 @@ export class LatexAutocompleteSettingTab extends PluginSettingTab {
 			);
 
 		// --- Custom Keyword Mappings ---
-		containerEl.createEl("h2", { text: t('settings.customMappings.title') });
+		new Setting(containerEl).setName(t('settings.customMappings.title')).setHeading();
 		containerEl.createEl("p", {
 			text: t('settings.customMappings.desc'),
 			cls: "setting-item-description",

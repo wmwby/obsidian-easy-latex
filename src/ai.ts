@@ -9,6 +9,14 @@ export interface ExtractResult {
 	end: EditorPosition;
 }
 
+interface ChatCompletionResponse {
+	choices?: Array<{
+		message?: {
+			content?: string;
+		};
+	}>;
+}
+
 export function extractPromptText(
 	editor: Editor,
 	cursor: EditorPosition
@@ -43,7 +51,7 @@ export async function callAiApi(
 		apiUrl += "/chat/completions";
 	}
 
-	const body: Record<string, any> = {
+	const body: Record<string, unknown> = {
 		model: settings.aiModel,
 		messages: [
 			{ role: "system", content: settings.aiSystemPrompt },
@@ -66,7 +74,8 @@ export async function callAiApi(
 		body: JSON.stringify(body),
 	});
 
-	const content = response.json.choices?.[0]?.message?.content;
+	const data = response.json as ChatCompletionResponse;
+	const content = data.choices?.[0]?.message?.content;
 	if (!content) throw new Error(t('ai.emptyResponse'));
 
 	// Strip markdown code block wrapping if present
