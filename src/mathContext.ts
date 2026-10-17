@@ -6,23 +6,19 @@ export function isInMathContext(
 ): boolean {
 	if (isInLatexCodeBlock(editor, cursor)) return true;
 
-	// Check $$ display math: scan current line up to cursor,
-	// then previous lines, to find if we're inside a $$ block
 	const line = editor.getLine(cursor.line);
 	const textBeforeCursor = line.substring(0, cursor.ch);
 
 	let inDisplayMath = false;
 
-	// First, check $$ on current line up to cursor
+	// Evaluate all delimiters before the cursor before deciding. Stopping at
+	// the nearest delimiter mistakes a closing $$ for an opening one. Start at
+	// the document boundary so blocks longer than 50 lines stay balanced.
+	for (let i = 0; i < cursor.line; i++) {
+		inDisplayMath = countDollarDollar(editor.getLine(i), inDisplayMath);
+	}
 	inDisplayMath = countDollarDollar(textBeforeCursor, inDisplayMath);
 	if (inDisplayMath) return true;
-
-	// If not inside $$ on current line, scan previous lines
-	for (let i = cursor.line - 1; i >= Math.max(0, cursor.line - 50); i--) {
-		const prevLine = editor.getLine(i);
-		inDisplayMath = countDollarDollar(prevLine, inDisplayMath);
-		if (inDisplayMath) return true;
-	}
 
 	// Check $ inline math on current line only
 	const withoutDisplayMath = textBeforeCursor.replace(/\$\$/g, "  ");

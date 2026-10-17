@@ -38,15 +38,12 @@ function isInMathContext(editor, cursor) {
   const line = editor.getLine(cursor.line);
   const textBeforeCursor = line.substring(0, cursor.ch);
   let inDisplayMath = false;
+  for (let i = 0; i < cursor.line; i++) {
+    inDisplayMath = countDollarDollar(editor.getLine(i), inDisplayMath);
+  }
   inDisplayMath = countDollarDollar(textBeforeCursor, inDisplayMath);
   if (inDisplayMath)
     return true;
-  for (let i = cursor.line - 1; i >= Math.max(0, cursor.line - 50); i--) {
-    const prevLine = editor.getLine(i);
-    inDisplayMath = countDollarDollar(prevLine, inDisplayMath);
-    if (inDisplayMath)
-      return true;
-  }
   const withoutDisplayMath = textBeforeCursor.replace(/\$\$/g, "  ");
   const dollarCount = (withoutDisplayMath.match(/\$/g) || []).length;
   if (dollarCount % 2 === 1)
